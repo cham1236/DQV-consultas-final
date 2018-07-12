@@ -11,22 +11,14 @@
                     v-model="user.nome">
           </fg-input>
         </div>
-        <div class="col-md-3">
-          <fg-input type="text"
-                    label="Username"
-                    placeholder="Username"
-                    v-model="user.username">
-          </fg-input>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md">
           <fg-input type="email"
-                    label="Username"
+                    label="email"
                     placeholder="Email"
                     v-model="user.email">
           </fg-input>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-6">
           <fg-input type="text"
@@ -47,8 +39,8 @@
       <div class="row">
         <div class="col-md-12">
           <fg-input type="text"
-                    label="Address"
-                    placeholder="Home Address"
+                    label="Endereço"
+                    placeholder="Rua, Bairro e Número"
                     v-model="user.address">
           </fg-input>
         </div>
@@ -57,43 +49,31 @@
       <div class="row">
         <div class="col-md-4">
           <fg-input type="text"
-                    label="City"
-                    placeholder="City"
+                    label="Cidade"
+                    placeholder="Cidade"
                     v-model="user.city">
           </fg-input>
         </div>
         <div class="col-md-4">
           <fg-input type="text"
-                    label="Country"
-                    placeholder="Country"
+                    label="Pais"
+                    placeholder="Pais"
                     v-model="user.country">
           </fg-input>
         </div>
         <div class="col-md-4">
-          <fg-input type="number"
-                    label="Postal Code"
-                    placeholder="ZIP Code"
+          <fg-input type="text"
+                    label="Codigo Postal"
+                    placeholder="Codigo Postal"
                     v-model="user.postalCode">
           </fg-input>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label>About Me</label>
-            <textarea rows="5" class="form-control border-input"
-                      placeholder="Here can be your description"
-                      v-model="user.aboutMe">
-              </textarea>
-          </div>
-        </div>
-      </div>
-      <div class="text-center">
+      <!-- <div class="text-center">
         <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="updateProfile">
           Update Profile
         </button>
-      </div>
+      </div> -->
       <div class="clearfix"></div>
     </form>
   </card>
@@ -109,15 +89,15 @@
       return {
         user: {
           nome: 'Carlos Henrique de Azevedo Moura',
-          username: 'michael23',
+          username: '',
           email: '',
           firstName: 'Carlos',
           lastName: 'Moura',
-          address: 'Melbourne, Australia',
-          city: 'melbourne',
-          country: 'Australia',
-          postalCode: '',
-          aboutMe: `Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.`
+          address: 'Rua cento e um, Maranguape 2',
+          city: 'Paulista',
+          country: 'Brazil',
+          postalCode: '53421-490',
+          aboutMe: ``
         }
       }
     },

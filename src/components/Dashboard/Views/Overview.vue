@@ -2,7 +2,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-3 col-md-6">
+        <!-- <div class="col-xl-3 col-md-6">
           <stats-card>
             <div slot="header" class="icon-warning">
               <i class="nc-icon nc-chart text-warning"></i>
@@ -60,7 +60,7 @@
               <i class="fa fa-refresh"></i>Updated now
             </div>
           </stats-card>
-        </div>
+        </div> -->
 
       </div>
       <div class="row">
@@ -69,8 +69,7 @@
                       :chart-options="lineChart.options"
                       :responsive-options="lineChart.responsiveOptions">
             <template slot="header">
-              <h4 class="card-title">Users Behavior</h4>
-              <p class="card-category">24 Hours performance</p>
+              <h4 class="card-title">Quantidade de Usuarios</h4>
             </template>
             <template slot="footer">
               <div class="legend">
