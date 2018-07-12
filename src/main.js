@@ -2,6 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue);
+
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
 
