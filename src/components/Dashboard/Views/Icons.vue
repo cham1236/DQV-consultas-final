@@ -1,21 +1,20 @@
 <template>
   <form>
     <b-list-group>
-        <div>
-          <md-button class="md-raised md-primary" v-on:click="setBool">Click me</md-button>
-          <h1>{{msg}}</h1>
-          <md-content v-if="bool" class="md-elevation-8" v-for="livro in consultas">
-            {{livro.nome}}<br>
-            {{livro.autor}}<br>
-            {{livro.ano}}<br><br><br>
-          </md-content>
-        </div>
-    </md-content>
+          <b-button class="offset-md-8"  v-on:click="setBool">Exibir Consultas</b-button>
+          <b-list-group-item v-if="bool" v-for="consulta in consultas">
+            <h5>Especialidade: <span>{{consulta.especialidade}}</span></h5>
+            <h5>Médico: <span>{{consulta.medico}}</span></h5>
+            <h5>Data: <span>{{consulta.data}}</span></h5>
+            <h5>Hora: <span>{{consulta.hora}}</span></h5>
+            <h5>Prontuario: <span>{{consulta.prontuario}}</span></h5>
+            <h5>Status: <span>{{consulta.status}}</span></h5>
+          </b-list-group-item>
+    </b-list-group>
   </form>
 </template>
 
 <script>
-  import Card from 'src/components/UIComponents/Cards/Card.vue'
   export default {
     name: 'App',
     data(){
@@ -23,12 +22,20 @@
         bool:false,
         consultas:[
           {
-            especialidade: '',
-            medico: '',
-            data: '',
-            hora: '',
-            protuario: '',
-            status: ''
+            especialidade: 'Cardiologista',
+            medico: 'Alessandro Lima',
+            data: '12/09/2034',
+            hora: '12:55',
+            prontuario: 'AB1238',
+            status: 'Pendente'
+          },
+          {
+            especialidade: 'Cardiologista',
+            medico: 'Carlos Azevedo',
+            data: '12/09/2034',
+            hora: '12:55',
+            prontuario: 'AB1238',
+            status: 'Pendente'
           }
         ]
       }
