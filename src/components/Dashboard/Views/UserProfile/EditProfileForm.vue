@@ -1,14 +1,14 @@
 <template>
   <card>
-    <h4 slot="header" class="card-title">Edit Profile</h4>
+    <h4 slot="header" class="card-title">Dados pessoais</h4>
     <form>
       <div class="row">
         <div class="col-md-5">
           <fg-input type="text"
-                    label="Company"
+                    label="Nome Completo"
                     :disabled="true"
                     placeholder="Paper dashboard"
-                    v-model="user.company">
+                    v-model="user.nome">
           </fg-input>
         </div>
         <div class="col-md-3">
@@ -108,11 +108,11 @@
     data () {
       return {
         user: {
-          company: 'Paper Dashboard',
+          nome: 'Carlos Henrique de Azevedo Moura',
           username: 'michael23',
           email: '',
-          firstName: 'Mike',
-          lastName: 'Andrew',
+          firstName: 'Carlos',
+          lastName: 'Moura',
           address: 'Melbourne, Australia',
           city: 'melbourne',
           country: 'Australia',

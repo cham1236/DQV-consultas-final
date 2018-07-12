@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Dashboard</a>
+      <a class="navbar-brand" href="#">DQV</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -11,7 +11,7 @@
               @click="toggleSidebar">
         <span class="navbar-toggler-bar burger-lines"></span>
         <span class="navbar-toggler-bar burger-lines"></span>
-        <span class="navbar-toggler-bar burger-lines"></span>
+        <span class="navbar-togglerz-bar burger-lines"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="nav navbar-nav mr-auto">
