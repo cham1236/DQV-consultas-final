@@ -7,36 +7,26 @@
             <template slot="header">
               <h4 class="card-title">Agendar Atendimento</h4>
             </template>
+            <b-form-group> 
+              <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
-            <b-form-select v-model="selected" class="mb-3">
-              <option :value="null">Please select an option</option>
-              <option value="a">Option A</option>
-              <option value="b" disabled>Option B (disabled)</option>
-              <optgroup label="Grouped Options">
-                <option :value="{'C':'3PO'}">Option with object value</option>
-                <option :value="{'R':'2D2'}">Another option with object value</option>
-              </optgroup>
-            </b-form-select>
-             
+              <!--Seleção de médicos-->
+              <b-form-select v-if="selected == 'ginecologista'" v-model="medico" :options="ginecologia"></b-form-select>
+              <b-form-select v-if="selected == 'cardio'" v-model="medico" :options="cardiologista"></b-form-select>
+              <b-form-select v-if="selected == 'dentista'" v-model="medico" :options="dentista"></b-form-select>
+              <b-form-select v-if="selected == 'psicologo'" v-model="medico" :options="psicologia"></b-form-select>
+
+
+              <!--Seleção de Data e Hora Disponível-->
+
+              <date-picker v-model="value4" lang="en" type="datetime" format="YYYY-MM-DD hh:mm:ss a" :time-picker-options="{ start: '00:00', step: '00:30', end: '23:30' }"></date-picker>
+
+
+            </b-form-group>
+                         
           </card>
 
         </div>
-
-        <div class="col-12">
-          <card class="card-plain">
-            <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <div class="table-responsive">
-              <l-table class="table-hover"
-                       :columns="table2.columns"
-                       :data="table2.data">
-              </l-table>
-            </div>
-          </card>
-        </div>
-
       </div>
     </div>
   </div>
@@ -88,13 +78,40 @@
     data () {
       return {
         selected: null,
-        options: [
-          { value: null, text: 'Please select some item' },
-          { value: 'a', text: 'This is First option' },
-          { value: 'b', text: 'Default Selected Option' },
-          { value: 'c', text: 'This is another option' },
-          { value: 'd', text: 'This one is disabled', disabled: true }
+        medico: null,
+        especialidades: [
+          { value: null, text: 'Escolha uma Especialidade' },
+          { value: 'cardio', text: 'Cardiologista' },
+          { value: 'dentista', text: 'Dentista' },
+          { value: 'ginecologista', text: 'Ginecologista' },
+          { value: 'psicologo', text: 'Psicólogo' }
         ],
+        cardiologista: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Marcela', text: 'Fernanda'},
+          {value: 'Algusta', text: 'Algusta'},
+          {value: 'Ricardo', text: 'Ricardo'},
+          {value: 'Renata', text: 'Renata'}              
+        ],
+        ginecologia: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Fernanda', text: 'Fernanda'},
+          {value: 'Algusta', text: 'Algusta'},
+          {value: 'Ricardo', text: 'Ricardo'},
+          {value: 'Renata', text: 'Renata'}              
+        ],
+        dentista: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Angela', text: 'Angela'},
+          {value: 'Aline', text: 'Aline'},
+          {value: 'Rodrigo', text: 'Rodrigo'},
+          {value: 'Carlos', text: 'Carlos'}              
+        ],
+        psocologia: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Maria', text: 'Maria'},
+          {value: 'Alice', text: 'Alice'},            
+        ],             
         table1: {
           columns: [...tableColumns],
           data: [...tableData]
