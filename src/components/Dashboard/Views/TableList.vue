@@ -5,15 +5,19 @@
         <div class="col-12">
           <card>
             <template slot="header">
-              <h4 class="card-title">Striped Table with Hover</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
+              <h4 class="card-title">Agendar Atendimento</h4>
             </template>
-            <div class="table-responsive">
-              <l-table class="table-hover table-striped"
-                       :columns="table1.columns"
-                       :data="table1.data">
-              </l-table>
-            </div>
+
+            <b-form-select v-model="selected" class="mb-3">
+              <option :value="null">Please select an option</option>
+              <option value="a">Option A</option>
+              <option value="b" disabled>Option B (disabled)</option>
+              <optgroup label="Grouped Options">
+                <option :value="{'C':'3PO'}">Option with object value</option>
+                <option :value="{'R':'2D2'}">Another option with object value</option>
+              </optgroup>
+            </b-form-select>
+             
           </card>
 
         </div>
@@ -83,6 +87,14 @@
     },
     data () {
       return {
+        selected: null,
+        options: [
+          { value: null, text: 'Please select some item' },
+          { value: 'a', text: 'This is First option' },
+          { value: 'b', text: 'Default Selected Option' },
+          { value: 'c', text: 'This is another option' },
+          { value: 'd', text: 'This one is disabled', disabled: true }
+        ],
         table1: {
           columns: [...tableColumns],
           data: [...tableData]
