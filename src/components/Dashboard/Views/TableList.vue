@@ -20,8 +20,9 @@
               <!--Seleção de Data e Hora Disponível-->
 
               <date-picker v-model="value4" lang="en" type="datetime" format="YYYY-MM-DD hh:mm:ss a" :time-picker-options="{ start: '00:00', step: '00:30', end: '23:30' }"></date-picker>
-
-
+              <b-form-input v-if="medico != null" type="date"></b-form-input>             
+              <b-form-input type='text' placeholder="prontuário"></b-form-input>
+              <b-butt
             </b-form-group>
                          
           </card>
