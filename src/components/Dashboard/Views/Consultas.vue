@@ -1,8 +1,7 @@
 <template>
   <form>
     <b-list-group>
-          <b-button class="offset-md-8"  v-on:click="setBool">Exibir Consultas</b-button>
-          <b-list-group-item v-if="bool" v-for="consulta in consultas">
+          <b-list-group-item v-for="consulta in consultas">
             <h5>Especialidade: <span>{{consulta.especialidade}}</span></h5>
             <h5>Médico: <span>{{consulta.medico}}</span></h5>
             <h5>Data: <span>{{consulta.data}}</span></h5>

@@ -3,11 +3,11 @@ import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 
 // Admin pages
-import Overview from 'src/components/Dashboard/Views/Overview.vue'
+import Noticias from 'src/components/Dashboard/Views/Noticias.vue'
 import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
-import TableList from 'src/components/Dashboard/Views/TableList.vue'
-import Typography from 'src/components/Dashboard/Views/Typography.vue'
-import Icons from 'src/components/Dashboard/Views/Icons.vue'
+import Atendimento from 'src/components/Dashboard/Views/Atendimento.vue'
+import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
+import Consultas from 'src/components/Dashboard/Views/Consultas.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 
@@ -20,12 +20,12 @@ const routes = [
   {
     path: '/admin',
     component: DashboardLayout,
-    redirect: '/admin/overview',
+    redirect: '/admin/noticias',
     children: [
       {
-        path: 'overview',
-        name: 'Overview',
-        component: Overview
+        path: 'noticias',
+        name: 'Noticias',
+        component: Noticias
       },
       {
         path: 'user',
@@ -33,19 +33,19 @@ const routes = [
         component: UserProfile
       },
       {
-        path: 'table-list',
-        name: 'Table List',
-        component: TableList
+        path: 'atendimento',
+        name: 'Atendimento',
+        component: Atendimento
       },
       {
-        path: 'typography',
-        name: 'Typography',
-        component: Typography
+        path: 'receitas',
+        name: 'Receitas',
+        component: Receitas
       },
       {
-        path: 'icons',
-        name: 'Icons',
-        component: Icons
+        path: 'consultas',
+        name: 'Consultas',
+        component: Consultas
       },
       {
         path: 'maps',

@@ -6,7 +6,6 @@
         <div class="col-md-5">
           <fg-input type="text"
                     label="Nome Completo"
-                    :disabled="true"
                     placeholder="Paper dashboard"
                     v-model="user.nome">
           </fg-input>
@@ -89,15 +88,13 @@
       return {
         user: {
           nome: 'Carlos Henrique de Azevedo Moura',
-          username: '',
-          email: '',
+          email: 'azevedo1236@gmail.com',
           firstName: 'Carlos',
           lastName: 'Moura',
           address: 'Rua cento e um, Maranguape 2',
           city: 'Paulista',
-          country: 'Brazil',
+          country: 'Brasil',
           postalCode: '53421-490',
-          aboutMe: ``
         }
       }
     },
