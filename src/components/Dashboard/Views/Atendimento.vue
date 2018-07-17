@@ -7,7 +7,9 @@
             <template slot="header">
               <h4 class="card-title">Agendar Atendimento</h4>
             </template>
-            <b-form-group> 
+
+
+            <b-form-fieldset method="POST"> 
               <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
               <!--Seleção de médicos-->
@@ -19,11 +21,11 @@
 
               <!--Seleção de Data e Hora Disponível-->
 
-              <date-picker v-model="value4" lang="en" type="datetime" format="YYYY-MM-DD hh:mm:ss a" :time-picker-options="{ start: '00:00', step: '00:30', end: '23:30' }"></date-picker>
-              <b-form-input v-if="medico != null" type="date"></b-form-input>             
-              <b-form-input type='text' placeholder="prontuário"></b-form-input>
-              <b-butt
-            </b-form-group>
+             <date-picker v-if="medico != null" v-model="value" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
+            
+             <!--Confirmar agendamento-->
+            <b-button v-if="value != ''" type="submit">Concluir</b-button>
+            </b-form-fieldset>
                          
           </card>
 
@@ -33,6 +35,7 @@
   </div>
 </template>
 <script>
+  import DatePicker from 'vue2-datepicker'
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   const tableColumns = ['Id', 'Name', 'Salary', 'Country', 'City']
@@ -74,7 +77,8 @@
   export default {
     components: {
       LTable,
-      Card
+      Card,
+      DatePicker
     },
     data () {
       return {
@@ -112,7 +116,22 @@
           {value: null, text: 'Escolha um médico'},
           {value: 'Maria', text: 'Maria'},
           {value: 'Alice', text: 'Alice'},            
-        ],             
+        ],
+        
+      value : '',
+      shortcuts: [
+        {
+          text: 'Today',
+          onClick: () => {
+            this.time3 = [ new Date(), new Date() ]
+          }
+        }
+      ],
+      timePickerOptions:{
+        start: '00:00',
+        step: '00:30',
+        end: '23:30'
+      },
         table1: {
           columns: [...tableColumns],
           data: [...tableData]
