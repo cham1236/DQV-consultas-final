@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#/admin/login" class="nav-link">
+            <a href="#/login" class="nav-link">
               Sair
             </a>
           </li>
