@@ -10,12 +10,13 @@ import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
 import Consultas from 'src/components/Dashboard/Views/Consultas.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
+import Login from 'src/components/Dashboard/Views/Login.vue'
 
 const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/admin/overview'
+    redirect: '/admin/noticias'
   },
   {
     path: '/admin',
@@ -56,6 +57,11 @@ const routes = [
         path: 'notifications',
         name: 'Notifications',
         component: Notifications
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: Login
       }
     ]
   },
