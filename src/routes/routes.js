@@ -1,7 +1,7 @@
 import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
-
+import Login from '../components/GeneralViews/Login.vue'
 // Admin pages
 import Noticias from 'src/components/Dashboard/Views/Noticias.vue'
 import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
@@ -10,13 +10,18 @@ import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
 import Consultas from 'src/components/Dashboard/Views/Consultas.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
-import Login from 'src/components/Dashboard/Views/Login.vue'
+
 
 const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/admin/noticias'
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    component: Login,
+    name: 'Login'    
   },
   {
     path: '/admin',
@@ -57,11 +62,6 @@ const routes = [
         path: 'notifications',
         name: 'Notifications',
         component: Notifications
-      },
-      {
-        path: 'login',
-        name: 'Login',
-        component: Login
       }
     ]
   },

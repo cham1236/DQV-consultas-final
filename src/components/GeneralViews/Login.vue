@@ -1,0 +1,58 @@
+<template>
+   <div  class="back">
+      <div class="div-center">
+         <div class="content">
+            <b-form-group>
+               <b-form-input type="text"
+                        placeholder="CPF"></b-form-input>
+               <b-form-input type="password"
+                           placeholder="Senha"></b-form-input>
+               <b-btn variant="primary" href="#/admin/noticias">Login</b-btn>
+            </b-form-group>
+         </div>
+
+      </div>
+   </div>
+  
+</template>
+
+<script>
+
+export default {
+  
+}
+</script>
+
+<style>
+.back {
+  background: #e2e2e2;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.div-center {
+  width: 400px;
+  height: 400px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  padding: 1em 2em;
+  border-bottom: 2px solid #ccc;
+  display: table;
+}
+
+div.content {
+  display: table-cell;
+  vertical-align: middle;
+}
+</style>
+
