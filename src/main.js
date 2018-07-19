@@ -25,9 +25,13 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  data (){
-    return{
-      
-    }
+  data:{
+    perfis: [
+      { value: 'paciente', text: 'Paciente' },
+      { value: 'atendente', text: 'Atendente' },
+      { value: 'coordenador', text: 'Coordenador' },
+      { value: 'medico', text: 'Médico' }
+    ],
+    perfil: 'paciente'
   }
 })

@@ -10,6 +10,8 @@ import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
 import Consultas from 'src/components/Dashboard/Views/Consultas.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
+import MarcarCons from 'src/components/Dashboard/Views/MarcarCons.vue'
+import ConsPaciente from 'src/components/Dashboard/Views/ConsPaciente.vue'
 
 
 const routes = [
@@ -62,6 +64,16 @@ const routes = [
         path: 'notifications',
         name: 'Notifications',
         component: Notifications
+      },
+      {
+        path: 'marcarcons',
+        name: 'MarcarCons',
+        component: MarcarCons
+      },
+      {
+        path: 'conspaciente',
+        name: 'MarcarCons',
+        component: ConsPaciente
       }
     ]
   },
