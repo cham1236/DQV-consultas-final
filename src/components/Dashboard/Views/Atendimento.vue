@@ -21,10 +21,10 @@
 
               <!--Seleção de Data e Hora Disponível-->
 
-             <date-picker v-if="medico != null" v-model="value" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
+             <date-picker v-if="medico != null" v-model="dataCons" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
             
              <!--Confirmar agendamento-->
-            <b-button v-if="value != ''" type="submit">Concluir</b-button>
+            <b-button v-if="value != ''" type="submit" v-on:click="addConsulta">Concluir</b-button>
             </b-form-fieldset>
                          
           </card>
@@ -50,6 +50,8 @@
       return {
         selected: null,
         medico: null,
+        dataCons: null,
+
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
           { value: 'cardio', text: 'Cardiologista' },
@@ -84,7 +86,6 @@
           {value: 'Alice', text: 'Alice'}            
         ],
         
-        value : '',
         shortcuts: [
           {
             text: 'Today',
@@ -102,7 +103,9 @@
 
     },
     methods:{
-      
+      addConsulta: function() {
+        this.$root.$data.consultas.push({especialidade: this.selected, medico: this.medico,dataCons: this.dataCons,status: 'Pendente', cpfPaciente: this.$root.$data.CPF});
+      }
     }
   }
 </script>

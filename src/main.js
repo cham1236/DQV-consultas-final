@@ -26,12 +26,29 @@ new Vue({
   render: h => h(App),
   router,
   data:{
+    CPF: '87262789222',
     perfis: [
       { value: 'paciente', text: 'Paciente' },
       { value: 'atendente', text: 'Atendente' },
       { value: 'coordenador', text: 'Coordenador' },
       { value: 'medico', text: 'Médico' }
     ],
-    perfil: 'paciente'
+    perfil: 'paciente',
+    consultas:[
+      {
+        especialidade: 'Cardiologista',
+        medico: 'Alessandro Lima',
+        dataCons: '12-09-2018 12:55:00 pm',
+        status: 'Pendente',
+        cpfPaciente: '87262789222' 
+      },
+      {
+        especialidade: 'Cardiologista',
+        medico: 'Carlos Azevedo',
+        dataCons: '12-09-2018 12:55:00 pm',
+        status: 'Pendente',
+        cpfPaciente: '738393922929'
+      }
+    ]
   }
 })
