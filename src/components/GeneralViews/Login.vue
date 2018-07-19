@@ -16,7 +16,7 @@
                                 </b-form-group>
                                 
                                 <!-- Change this to a button or input when using this as a form -->
-                                <b-btn block="true" variant="success" href="#/admin/noticiasgit" >Login</b-btn>
+                                <b-btn block="true" variant="success" href="#/admin/noticias" >Login</b-btn>
                             
                         </b-form-fieldset>
                     </div>
