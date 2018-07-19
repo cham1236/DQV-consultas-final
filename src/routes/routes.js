@@ -16,16 +16,12 @@ const routes = [
   {
     path: '/',
     component: DashboardLayout,
-<<<<<<< HEAD
-    redirect: '/admin/noticias'
-=======
     redirect: '/login'
   },
   {
     path: '/login',
     component: Login,
-    name: 'Login'    
->>>>>>> da18c5c5bf459037d5f643448b4094c00a015a90
+    name: 'Login'
   },
   {
     path: '/admin',
