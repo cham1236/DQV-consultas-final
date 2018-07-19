@@ -1,31 +1,5 @@
 <template>
-<!--    <b-container fluid class="back wrapper content">
-      <b-row  align-v="center">
-         <b-col class="div-center">
-           <div>
-             <b-img center fluid src="static/img/Brasão_UFRPE.png" id="logo"></b-img>
-             <h1><strong>DQV</strong></h1>
-             <h3>{{msg}}</h3>
-           </div>
-            <b-form-group>
-               <b-form-input type="text"
-                        placeholder="CPF"></b-form-input>
-                
-               <b-form-input type="password"
-                           placeholder="Senha"></b-form-input>
-               <b-btn variant="primary" href="#/admin/noticias">Login</b-btn>
-            </b-form-group>
-         </b-col>
-         <div class="w-100"></div>
-         <b-col>
-          <content-footer></content-footer>
-        </b-col>
-      </b-row>
 
-      <b-row align-v="end" no-gutters="true">
-      </b-row>
-   </b-container>
-   -->
       <b-container>
         <b-row>
             <b-col md="4" offset-md="4">
@@ -42,7 +16,7 @@
                                 </b-form-group>
                                 
                                 <!-- Change this to a button or input when using this as a form -->
-                                <b-btn block="true" variant="success" >Login</b-btn>
+                                <b-btn block="true" variant="success" href="#/admin/noticias" >Login</b-btn>
                             
                         </b-form-fieldset>
                     </div>
@@ -60,7 +34,42 @@ export default {
  },
  data (){
    return{
-     msg: 'Módulo de Consultas, Bem Vindo(a)!'
+     msg: 'Módulo de Consultas, Bem Vindo(a)!',
+     selected: null,
+        medico: null,
+        especialidades: [
+          { value: null, text: 'Escolha uma Especialidade' },
+          { value: 'cardio', text: 'Cardiologista' },
+          { value: 'dentista', text: 'Dentista' },
+          { value: 'ginecologista', text: 'Ginecologista' },
+          { value: 'psicologo', text: 'Psicólogo' }
+        ],
+        cardiologista: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Marcela', text: 'Marcela'},
+          {value: 'Caio', text: 'Caio'},
+          {value: 'Felipe', text: 'Felipe'},
+          {value: 'Gilberto', text: 'Gilberto'}              
+        ],
+        ginecologia: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Fernanda', text: 'Fernanda'},
+          {value: 'Algusta', text: 'Algusta'},
+          {value: 'Ricardo', text: 'Ricardo'},
+          {value: 'Renata', text: 'Renata'}              
+        ],
+        dentista: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Angela', text: 'Angela'},
+          {value: 'Aline', text: 'Aline'},
+          {value: 'Rodrigo', text: 'Rodrigo'},
+          {value: 'Carlos', text: 'Carlos'}              
+        ],
+        psocologia: [
+          {value: null, text: 'Escolha um médico'},
+          {value: 'Maria', text: 'Maria'},
+          {value: 'Alice', text: 'Alice'},            
+        ]
    }
  }
   
@@ -102,44 +111,6 @@ body {
 .panel-body {
     padding: 20px;
 }
-
-
-/* .back {
-  background: #e2e2e2;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-
-.div-center {
-  width: 400px;
-  height: 400px;
-  background-color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  max-width: 100%;
-  max-height: 100%;
-  overflow: auto;
-  padding: 1em 2em;
-  border-bottom: 2px solid #ccc;
-  display: table;
-}
-
-div.content {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#logo{
-  height: 50%;
-  width: 25%;
-  padding-bottom: 30px;
-} */
 
 </style>
 

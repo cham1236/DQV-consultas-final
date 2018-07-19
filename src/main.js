@@ -25,5 +25,10 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  data (){
+    return{
+      
+    }
+  }
 })
