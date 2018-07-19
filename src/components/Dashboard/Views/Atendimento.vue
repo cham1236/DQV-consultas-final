@@ -61,7 +61,7 @@
         ],
         cardiologista: [
           {value: null, text: 'Escolha um médico'},
-          {value: 'Marcela', text: 'Fernanda'},
+          {value: 'Fernanda', text: 'Fernanda'},
           {value: 'Algusta', text: 'Algusta'},
           {value: 'Ricardo', text: 'Ricardo'},
           {value: 'Renata', text: 'Renata'}              

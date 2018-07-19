@@ -12,6 +12,8 @@ import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import MarcarCons from 'src/components/Dashboard/Views/MarcarCons.vue'
 import ConsPaciente from 'src/components/Dashboard/Views/ConsPaciente.vue'
+import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
+import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescritas.vue'
 
 
 const routes = [
@@ -74,6 +76,16 @@ const routes = [
         path: 'conspaciente',
         name: 'MarcarCons',
         component: ConsPaciente
+      },
+      {
+        path: 'meusatendimentos',
+        name: 'MeusAtendimentos',
+        component: MeusAtendimentos
+      },
+      {
+        path: 'receitasprescritas',
+        name: 'ReceitasPrescritas',
+        component: ReceitasPrescritas
       }
     ]
   },

@@ -27,6 +27,7 @@ new Vue({
   router,
   data:{
     CPF: '87262789222',
+    medico: 'Fernanda',
     perfis: [
       { value: 'paciente', text: 'Paciente' },
       { value: 'atendente', text: 'Atendente' },
@@ -49,6 +50,36 @@ new Vue({
         status: 'Pendente',
         cpfPaciente: '738393922929'
       }
+    ],
+    receitas:[
+      {
+        remedio: '1 caixa de paracetamol',
+        uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
+        paciente: 'Carlos Azevedo',
+        medico: 'Fernanda',
+        data: '12/07/2018',
+      },
+      {
+        remedio: '1 caixa de paracetamol',
+        uso: 'Uma injecao de amoxilina',
+        paciente: 'Vanilson',
+        medico: 'Fernanda',
+        data: '12/07/2018',
+      },
+      {
+        remedio: '1 caixa de paracetamol',
+        uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
+        paciente: 'Caio Walker',
+        medico: 'Alessandro Lima',
+        data: '12/07/2018',
+      },
+      {
+        remedio: '1 caixa de paracetamol',
+        uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
+        paciente: 'Alex Douglas',
+        medico: 'Alessandro Lima',
+        data: '12/07/2018',
+      },
     ]
   }
 })

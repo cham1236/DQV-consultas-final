@@ -3,7 +3,7 @@
     <b-card-group deck class="row">
             <b-card bg-variant="secondary"
                 text-variant="white"
-                class="text-center" v-for="receita in $root.$data.receitas" v-bind:data="receita" v-bind:key="receita">
+                class="text-center" v-for="receita in $root.$data.receitas" v-bind:data="receita" v-bind:key="receita" v-if="receita.medico == $root.$data.medico">
             <h3>Receita</h3><br>
             <h5>Remedio: <span>{{receita.remedio}}</span></h5>
             <h5>uso: <span>{{receita.uso}}</span></h5>
