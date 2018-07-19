@@ -1,5 +1,4 @@
 <template>
-  <b-form-fieldset>
     <b-list-group>
           <b-list-group-item v-for="consulta in consultas" v-bind:data="consulta" v-bind:key="consulta">
             <h5>Especialidade: <span>{{consulta.especialidade}}</span></h5>
@@ -10,7 +9,6 @@
             <h5>Status: <span>{{consulta.status}}</span></h5>
           </b-list-group-item>
     </b-list-group>
-  </b-form-fieldset>
 </template>
 
 <script>
