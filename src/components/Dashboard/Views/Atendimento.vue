@@ -39,6 +39,10 @@
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   const tableColumns = ['Id', 'Name', 'Salary', 'Country', 'City']
+<<<<<<< HEAD
+=======
+  const tableData = [{}]
+>>>>>>> da18c5c5bf459037d5f643448b4094c00a015a90
   export default {
     components: {
       LTable,
@@ -83,19 +87,29 @@
           {value: 'Alice', text: 'Alice'},            
         ],
         
-      value : '',
-      shortcuts: [
-        {
-          text: 'Today',
-          onClick: () => {
-            this.time3 = [ new Date(), new Date() ]
+        value : '',
+        shortcuts: [
+          {
+            text: 'Today',
+            onClick: () => {
+              this.time3 = [ new Date(), new Date() ]
+            }
           }
+<<<<<<< HEAD
         }
       ],
       timePickerOptions:{
         start: '00:00',
         step: '00:30',
         end: '23:30'
+=======
+        ],
+        timePickerOptions:{
+          start: '00:00',
+          step: '00:30',
+          end: '23:30'
+        }
+>>>>>>> da18c5c5bf459037d5f643448b4094c00a015a90
       }
       }
     },

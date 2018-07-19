@@ -1,7 +1,7 @@
 <template>
   <form>
     <b-list-group>
-          <b-list-group-item v-for="consulta in consultas">
+          <b-list-group-item v-for="consulta in consultas" v-bind:data="consulta" v-bind:key="consulta">
             <h5>Especialidade: <span>{{consulta.especialidade}}</span></h5>
             <h5>Médico: <span>{{consulta.medico}}</span></h5>
             <h5>Data: <span>{{consulta.data}}</span></h5>
