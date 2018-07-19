@@ -81,7 +81,7 @@
         psocologia: [
           {value: null, text: 'Escolha um médico'},
           {value: 'Maria', text: 'Maria'},
-          {value: 'Alice', text: 'Alice'},            
+          {value: 'Alice', text: 'Alice'}            
         ],
         
         value : '',
