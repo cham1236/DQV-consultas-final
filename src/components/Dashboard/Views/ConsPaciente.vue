@@ -1,5 +1,11 @@
 <template>
-  <b-form-fieldset>
+  <form>
+    CPF do paciente:
+    <b-form-input v-model="CPFPaciente" placeholder="CPF"></b-form-input>
+    <b-button type="submit">Verificar</b-button>
+    <br>
+    <br>
+    Consultas do paciente
     <b-list-group>
           <b-list-group-item v-for="consulta in consultas" v-bind:data="consulta" v-bind:key="consulta">
             <h5>Especialidade: <span>{{consulta.especialidade}}</span></h5>
@@ -10,7 +16,7 @@
             <h5>Status: <span>{{consulta.status}}</span></h5>
           </b-list-group-item>
     </b-list-group>
-  </b-form-fieldset>
+  </form>
 </template>
 
 <script>

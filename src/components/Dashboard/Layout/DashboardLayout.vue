@@ -28,6 +28,16 @@
         <p>Minhas consultas</p>
       </sidebar-link>
 
+      <sidebar-link v-if="($root.$data.perfil == 'atendente') || ($root.$data.perfil == 'coordenador')" to="/admin/marcarcons">
+        <i class="nc-icon nc-ambulance"></i>
+        <p>Marcar consulta</p>
+      </sidebar-link>
+
+      <sidebar-link v-if="($root.$data.perfil == 'atendente') || ($root.$data.perfil == 'coordenador')" to="/admin/conspaciente">
+        <i class="nc-icon nc-ambulance"></i>
+        <p>Cons do paciente</p>
+      </sidebar-link>
+
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
-
 import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue);
@@ -25,5 +24,14 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  data:{
+    perfis: [
+      { value: 'paciente', text: 'Paciente' },
+      { value: 'atendente', text: 'Atendente' },
+      { value: 'coordenador', text: 'Coordenador' },
+      { value: 'medico', text: 'Médico' }
+    ],
+    perfil: 'paciente'
+  }
 })

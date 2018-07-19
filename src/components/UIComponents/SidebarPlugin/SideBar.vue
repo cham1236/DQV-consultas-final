@@ -13,6 +13,16 @@
         </a>
       </div>
 
+      <drop-down>
+        <template slot="title">
+          <i class="fa fa-globe"></i>
+          <span >Views</span>
+        </template>
+        <a class="dropdown-item" href="#">Coordenador</a>
+        <a class="dropdown-item" href="#">Médico</a>
+        <a class="dropdown-item" href="#">Paciente</a>
+      </drop-down>
+
       <slot name="content"></slot>
       <ul class="nav">
         <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
@@ -31,11 +41,13 @@
   </div>
 </template>
 <script>
+  import DropDown from 'src/components/UIComponents/Dropdown.vue'
   import SidebarLink from './SidebarLink.vue'
 
   export default {
     components: {
-      SidebarLink
+      SidebarLink,
+      DropDown
     },
     props: {
       title: {

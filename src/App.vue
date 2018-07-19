@@ -8,6 +8,7 @@
 <script>
   export default {}
 </script>
+
 <style lang="scss">
   .vue-notifyjs.notifications{
     .list-move {

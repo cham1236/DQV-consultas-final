@@ -28,6 +28,9 @@
             <a class="dropdown-item" href="#">Another notification</a>
           </drop-down>
         </ul>
+        <ul class="nav navbar-nav mr-auto">
+          <b-select v-model="$root.$data.perfil" :options="this.$root.$data.perfis" class="mb-3"></b-select>
+        </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#/admin/user">
@@ -54,7 +57,8 @@
     },
     data () {
       return {
-        activeNotifications: false
+        activeNotifications: false,
+        selected: 'paciente'
       }
     },
     methods: {
