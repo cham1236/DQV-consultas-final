@@ -13,17 +13,17 @@
         <p>Dados Pessoais</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/atendimento">
+      <sidebar-link to="/admin/atendimento" v-if="($root.$data.perfil == 'paciente')">
         <i class="nc-icon nc-notes"></i>
         <p>Agendar Atendimento</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/receitas">
+      <sidebar-link to="/admin/receitas" v-if="($root.$data.perfil == 'paciente')">
         <i class="nc-icon nc-single-copy-04"></i>
         <p>Minhas receitas</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/consultas">
+      <sidebar-link to="/admin/consultas" v-if="($root.$data.perfil == 'paciente')">
         <i class="nc-icon nc-ambulance"></i>
         <p>Minhas consultas</p>
       </sidebar-link>
