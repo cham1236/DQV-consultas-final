@@ -9,7 +9,7 @@
             <h5>uso: <span>{{receita.uso}}</span></h5>
             <h5>Paciente: <span>{{receita.paciente}}</span></h5>
             <h5>Médico: <span>{{receita.medico}}</span></h5>
-            <h5>Data: <span>{{receita.data}}</span></h5>            
+            <h5>Data: <span>{{receita.data}}</span></h5> 
           </b-card>
     </b-card-group>
   </div>
