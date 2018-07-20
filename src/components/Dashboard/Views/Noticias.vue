@@ -46,9 +46,8 @@
               ut lacus vel interdum.
             </p>
           </b-carousel-slide>
-          <p></p>
-
         </b-carousel>
+        <br><br>
         </b-col>
       </b-row>
 
