@@ -9,14 +9,14 @@
                         <b-form-fieldset>
 
                                 <b-form-group>
-                                    <b-form-input class="form-control" placeholder=" CPF" name="cpf" type="text" autofocus></b-form-input>
+                                    <b-form-input v-model="cpf" placeholder=" CPF" name="cpf" type="number" autofocus></b-form-input>
                                 </b-form-group>
                                 <b-form-group>
-                                    <b-form-input placeholder="Password" name="password" type="password" value=""></b-form-input>
+                                    <b-form-input v-model="senha" placeholder="Password" name="password" type="password"></b-form-input>
                                 </b-form-group>
                                 
-                                <!-- Change this to a button or input when using this as a form -->
-                                <b-btn block="true" variant="success" href="#/admin/noticias" >Login</b-btn>
+                                
+                                <b-btn block="true" variant="success" href="#/admin/noticias">Login</b-btn>
                             
                         </b-form-fieldset>
                     </div>
@@ -33,44 +33,21 @@ export default {
    ContentFooter
  },
  data (){
-   return{
-     msg: 'Módulo de Consultas, Bem Vindo(a)!',
-     selected: null,
-        medico: null,
-        especialidades: [
-          { value: null, text: 'Escolha uma Especialidade' },
-          { value: 'cardio', text: 'Cardiologista' },
-          { value: 'dentista', text: 'Dentista' },
-          { value: 'ginecologista', text: 'Ginecologista' },
-          { value: 'psicologo', text: 'Psicólogo' }
-        ],
-        cardiologista: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Marcela', text: 'Marcela'},
-          {value: 'Caio', text: 'Caio'},
-          {value: 'Felipe', text: 'Felipe'},
-          {value: 'Gilberto', text: 'Gilberto'}              
-        ],
-        ginecologia: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Fernanda', text: 'Fernanda'},
-          {value: 'Algusta', text: 'Algusta'},
-          {value: 'Ricardo', text: 'Ricardo'},
-          {value: 'Renata', text: 'Renata'}              
-        ],
-        dentista: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Angela', text: 'Angela'},
-          {value: 'Aline', text: 'Aline'},
-          {value: 'Rodrigo', text: 'Rodrigo'},
-          {value: 'Carlos', text: 'Carlos'}              
-        ],
-        psocologia: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Maria', text: 'Maria'},
-          {value: 'Alice', text: 'Alice'},            
-        ]
-   }
+  return{
+    msg: 'Módulo de Consultas, Bem Vindo(a)!',
+    cpf: null,
+    senha: null
+    }
+  },
+
+  methods: {
+    validarLogin: function (){
+      if(this.cpf == this.$root.$data.CPF){
+        return true;
+      }else{
+        return alert("Login Inválido");
+      }
+    }
  }
   
 }
