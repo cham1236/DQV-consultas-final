@@ -1,5 +1,17 @@
 <template>
-  <div class="mb-3">
+
+  <b-table :items=$root.$data.receitas>
+    <template slot="data" slot-scope="row">
+      <!-- we use @click.stop here to prevent emitting of a 'row-clicked' event  -->
+      <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
+       {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
+      </b-button>
+      <!-- In some circumstances you may need to use @click.native.stop instead -->
+      <!-- As `row.showDetails` is one-way, we call the toggleDetails function on @change -->
+    </template>
+  </b-table>
+
+  <!-- <div class="mb-3">
     <b-card-group deck class="row">
             <b-card bg-variant="secondary"
                 text-variant="white"
@@ -12,10 +24,11 @@
             <h5>Data: <span>{{receita.data}}</span></h5> 
           </b-card>
     </b-card-group>
-  </div>
+  </div> -->
 </template>
 
 <script>
+
   export default {
     name: 'App',
     data(){
@@ -26,6 +39,7 @@
   }
 
 </script>
+
 <style>
   
 </style>
