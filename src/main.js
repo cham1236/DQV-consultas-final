@@ -25,8 +25,10 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  data:{
-    CPF: '87262789222',
+  fields: ['medico', 'data', 'mais_detalhes'],
+  data () {
+    return {
+      CPF: '87262789222',
     medico: 'Fernanda',
     perfis: [
       { value: 'paciente', text: 'Paciente' },
@@ -81,5 +83,6 @@ new Vue({
         data: '12/07/2018',
       },
     ]
+    }
   }
 })
