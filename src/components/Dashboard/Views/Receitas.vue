@@ -1,30 +1,14 @@
 <template>
 
-  <b-table :items="$root.$data.receitas"
-            :fields="$root.$data.fields">
-    <template slot="data" slot-scope="row">
+  <b-table :items=$root.$data.receitas>
+    <template slot="" slot-scope="row">
       <!-- we use @click.stop here to prevent emitting of a 'row-clicked' event  -->
       <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
-       {{ row.detailsShowing ? 'Esconder' : 'Mostrar'}} Detalhes
+       {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
       </b-button>
       <!-- In some circumstances you may need to use @click.native.stop instead -->
       <!-- As `row.showDetails` is one-way, we call the toggleDetails function on @change -->
     </template>
-    <template slot="row-details" slot-scope="row">
-        <b-card>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Remedio:</b></b-col>
-            <b-col>{{ $root.$data.receitas.remedio}}</b-col>
-          </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Uso:</b></b-col>
-            <b-col>{{ $root.$data.receitas.uso }}</b-col>
-          </b-row>
-          <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-        </b-card>
-      </template>
-    </b-table>
-  </template>
   </b-table>
 
   <!-- <div class="mb-3">

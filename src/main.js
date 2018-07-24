@@ -25,10 +25,8 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  fields: ['medico', 'data', 'mais_detalhes'],
-  data () {
-    return {
-      CPF: '87262789222',
+  data: {
+    CPF: '87262789222',
     medico: 'Fernanda',
     perfis: [
       { value: 'paciente', text: 'Paciente' },
@@ -37,13 +35,13 @@ new Vue({
       { value: 'medico', text: 'Médico' }
     ],
     perfil: 'paciente',
-    consultas:[
+    consultas: [
       {
         especialidade: 'Cardiologista',
         medico: 'Alessandro Lima',
         dataCons: '12-09-2018 12:55:00 pm',
         status: 'Pendente',
-        cpfPaciente: '87262789222' 
+        cpfPaciente: '87262789222'
       },
       {
         especialidade: 'Cardiologista',
@@ -53,7 +51,7 @@ new Vue({
         cpfPaciente: '738393922929'
       }
     ],
-    receitas:[
+    receitas: [
       {
         remedio: '1 caixa de paracetamol',
         uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
@@ -66,23 +64,22 @@ new Vue({
         uso: 'Uma injecao de amoxilina',
         paciente: 'Vanilson',
         medico: 'Fernanda',
-        data: '12/07/2018',
+        data: '12/07/2018'
       },
       {
         remedio: '1 caixa de paracetamol',
         uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
         paciente: 'Caio Walker',
         medico: 'Alessandro Lima',
-        data: '12/07/2018',
+        data: '12/07/2018'
       },
       {
         remedio: '1 caixa de paracetamol',
         uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
         paciente: 'Alex Douglas',
         medico: 'Alessandro Lima',
-        data: '12/07/2018',
-      },
+        data: '12/07/2018'
+      }
     ]
-    }
   }
 })
