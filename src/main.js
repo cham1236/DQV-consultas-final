@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 
-Vue.use(BootstrapVue);
+Vue.use(BootstrapVue)
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -53,11 +53,11 @@ new Vue({
     ],
     receitas: [
       {
-        remedio: '1 caixa de paracetamol',
+        remedio: '2 cartelas de dorflex',
         uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
         paciente: 'Carlos Azevedo',
         medico: 'Fernanda',
-        data: '12/07/2018',
+        data: '12/07/2018'
       },
       {
         remedio: '1 caixa de paracetamol',
@@ -67,7 +67,7 @@ new Vue({
         data: '12/07/2018'
       },
       {
-        remedio: '1 caixa de paracetamol',
+        remedio: '5 comprimidos de multigripe',
         uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
         paciente: 'Caio Walker',
         medico: 'Alessandro Lima',
