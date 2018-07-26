@@ -14,7 +14,6 @@ import ConsPaciente from 'src/components/Dashboard/Views/ConsPaciente.vue'
 import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
 import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescritas.vue'
 
-
 const routes = [
   {
     path: '/',

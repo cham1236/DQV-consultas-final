@@ -14,22 +14,8 @@
         <span class="navbar-togglerz-bar burger-lines"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
-        <ul class="nav navbar-nav mr-auto">
-          <drop-down tag="li">
-            <template slot="title">
-              <i class="nc-icon nc-bell-55"></i>
-              <b class="caret"></b>
-              <span class="notification">5</span>
-            </template>
-            <a class="dropdown-item" href="#">Notification 1</a>
-            <a class="dropdown-item" href="#">Notification 2</a>
-            <a class="dropdown-item" href="#">Notification 3</a>
-            <a class="dropdown-item" href="#">Notification 4</a>
-            <a class="dropdown-item" href="#">Another notification</a>
-          </drop-down>
-        </ul>
-        <ul class="nav navbar-nav mr-auto">
-          <b-select v-model="$root.$data.perfil" :options="this.$root.$data.perfis" class="mb-3"></b-select>
+        <ul class="col-2">
+          <b-select v-model="$root.$data.perfil" :options="this.$root.$data.perfis" class="mb-2"></b-select>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">

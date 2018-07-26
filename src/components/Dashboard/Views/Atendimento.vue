@@ -48,10 +48,10 @@
     },
     data () {
       return {
-        selected: null,
+        especialidade: null,
         medico: null,
         dataCons: null,
-
+        
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
           { value: 'cardio', text: 'Cardiologista' },
@@ -104,10 +104,10 @@
     },
     methods:{
       addConsulta: function() {
-        this.$root.$data.consultas.push({especialidade: this.selected, medico: this.medico,dataCons: this.dataCons,status: 'Pendente', cpfPaciente: this.$root.$data.CPF});
-      }
+      this.$root.$data.consultas.push({especialidade: this.especialidade, medico: this.medico, dataCons: this.dataCons, status: 'Pendente', cpfPaciente: this.$root.$data.CPF});
     }
   }
+}
 </script>
 
 <style>
