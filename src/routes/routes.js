@@ -61,7 +61,7 @@ const routes = [
         component: Notifications
       },
       {
-        path: 'marcarcons',
+        path: 'marcarConsulta',
         name: 'MarcarCons',
         component: MarcarCons
       },

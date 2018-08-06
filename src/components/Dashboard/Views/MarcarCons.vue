@@ -8,11 +8,12 @@
               <h4 class="card-title">Marcar consulta</h4>
             </template>
 
-
-            <b-form-fieldset method="POST"> 
               CPF do paciente:
               <b-form-input v-model="CPFPaciente" placeholder="CPF"></b-form-input>
               <br>
+
+            <b-form-fieldset method="POST"> 
+
               <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
               <!--Seleção de médicos-->

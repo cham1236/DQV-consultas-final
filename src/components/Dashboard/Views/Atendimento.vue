@@ -7,9 +7,9 @@
             <template slot="header">
               <h4 class="card-title">Agendar Atendimento</h4>
             </template>
-
-
+            
             <b-form-fieldset method="POST"> 
+              
               <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
               <!--Seleção de médicos-->
@@ -21,10 +21,10 @@
 
               <!--Seleção de Data e Hora Disponível-->
 
-             <date-picker v-if="medico != null" v-model="dataCons" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
+             <date-picker v-if="medico != null" v-model="value" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
             
              <!--Confirmar agendamento-->
-            <b-button v-if="value != ''" type="submit" v-on:click="addConsulta">Concluir</b-button>
+            <b-button v-if="value != ''" type="submit">Concluir</b-button>
             </b-form-fieldset>
                          
           </card>

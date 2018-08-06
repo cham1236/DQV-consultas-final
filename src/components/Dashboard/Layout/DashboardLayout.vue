@@ -28,14 +28,24 @@
         <p>Minhas consultas</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/marcarcons" v-if="($root.$data.perfil == 'atendente') || ($root.$data.perfil == 'coordenador')">
+      <sidebar-link to="/admin/marcarConsulta" v-if="($root.$data.perfil == 'atendente')">
+        <i class="nc-icon nc-notes"></i>
+        <p>Marcar consulta</p>
+      </sidebar-link>
+
+       <sidebar-link to="/admin/conspaciente" v-if="($root.$data.perfil == 'atendente')">
+        <i class="nc-icon nc-ambulance"></i>
+        <p>Consultas do paciente</p>
+      </sidebar-link>
+
+      <sidebar-link to="/admin/marcarcons" v-if="($root.$data.perfil == 'coordenador')">
         <i class="nc-icon nc-ambulance"></i>
         <p>Marcar consulta</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/conspaciente" v-if="($root.$data.perfil == 'atendente') || ($root.$data.perfil == 'coordenador')">
+      <sidebar-link to="/admin/conspaciente" v-if="($root.$data.perfil == 'coordenador')">
         <i class="nc-icon nc-ambulance"></i>
-        <p>Cons do paciente</p>
+        <p>Consultas do paciente</p>
       </sidebar-link>
 
       <sidebar-link to="/admin/meusatendimentos" v-if="($root.$data.perfil == 'medico')">

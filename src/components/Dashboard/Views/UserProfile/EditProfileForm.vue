@@ -1,36 +1,30 @@
 <template>
   <card>
     <h4 slot="header" class="card-title">Dados pessoais</h4>
-    <form>
+    <form :itemref=$root.$data.usuario>
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-7">
           <fg-input type="text"
                     label="Nome Completo"
                     placeholder="Paper dashboard"
                     v-model="user.nome">
           </fg-input>
         </div>
-        <div class="col-md">
+        <div class="col-md-5">
+          <fg-input type="text"
+                    label="CPF"
+                    placeholder="cpf"
+                    v-model="user.firstName">
+          </fg-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
           <fg-input type="email"
                     label="email"
                     placeholder="Email"
                     v-model="user.email">
-          </fg-input>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <fg-input type="text"
-                    label="First Name"
-                    placeholder="First Name"
-                    v-model="user.firstName">
-          </fg-input>
-        </div>
-        <div class="col-md-6">
-          <fg-input type="text"
-                    label="Last Name"
-                    placeholder="Last Name"
-                    v-model="user.lastName">
           </fg-input>
         </div>
       </div>
@@ -68,11 +62,7 @@
           </fg-input>
         </div>
       </div>
-      <!-- <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="updateProfile">
-          Update Profile
-        </button>
-      </div> -->
+
       <div class="clearfix"></div>
     </form>
   </card>
@@ -89,8 +79,6 @@
         user: {
           nome: 'Carlos Henrique de Azevedo Moura',
           email: 'azevedo1236@gmail.com',
-          firstName: 'Carlos',
-          lastName: 'Moura',
           address: 'Rua cento e um, Maranguape 2',
           city: 'Paulista',
           country: 'Brasil',
@@ -106,6 +94,6 @@
   }
 
 </script>
-<style>
 
+<style>
 </style>

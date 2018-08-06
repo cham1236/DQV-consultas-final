@@ -26,10 +26,17 @@ new Vue({
   render: h => h(App),
   router,
   data: {
+    usuario: [
+      {
+        nome: 'Carlos Henrique de Azevedo',
+        email: 'azevedo1236@gmail.com',
+        cpf: '87262789222'
+      }
+    ],
     CPF: '87262789222',
     medico: 'Fernanda',
     perfis: [
-      { value: 'paciente', text: 'Paciente' },
+      {value: 'paciente', text: 'Paciente'},
       { value: 'atendente', text: 'Atendente' },
       { value: 'coordenador', text: 'Coordenador' },
       { value: 'medico', text: 'Médico' }
