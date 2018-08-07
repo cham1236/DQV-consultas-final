@@ -2,8 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
+import VueResource from 'vue-resource'
 
 Vue.use(BootstrapVue)
+Vue.use(VueResource)
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -56,36 +58,6 @@ new Vue({
         dataCons: '12-09-2018 12:55:00 pm',
         status: 'Pendente',
         cpfPaciente: '738393922929'
-      }
-    ],
-    receitas: [
-      {
-        remedio: '2 cartelas de dorflex',
-        uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
-        paciente: 'Carlos Azevedo',
-        medico: 'Fernanda',
-        data: '12/07/2018'
-      },
-      {
-        remedio: '1 caixa de paracetamol',
-        uso: 'Uma injecao de amoxilina',
-        paciente: 'Vanilson',
-        medico: 'Fernanda',
-        data: '12/07/2018'
-      },
-      {
-        remedio: '5 comprimidos de multigripe',
-        uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
-        paciente: 'Caio Walker',
-        medico: 'Alessandro Lima',
-        data: '12/07/2018'
-      },
-      {
-        remedio: '1 caixa de paracetamol',
-        uso: 'Tomar 1 comprimido a cada 6 horas ate acabar a caixa',
-        paciente: 'Alex Douglas',
-        medico: 'Alessandro Lima',
-        data: '12/07/2018'
       }
     ]
   }

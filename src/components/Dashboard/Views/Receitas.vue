@@ -1,6 +1,6 @@
 <template>
 
-  <b-table :items=$root.$data.receitas :fields="fields">
+  <b-table :items="receitas" :fields="fields">
 
     <template slot="detalhes" slot-scope="row">
 
@@ -34,15 +34,23 @@
 <script>
 
   export default {
-    name: 'App',
-    data(){
-      return{
 
-        fields: [ 'medico', 'data', 'detalhes' ]
-        
-      }
+  name: 'receita',
+  created () {
+    this.$http.get('http://localhost:9000/receitas').then(response => {
+      this.receitas = response.body
+    }, response => {
+      // error callback
+    })
+  },
+
+  data () {
+    return {
+      fields: [ 'medico', 'data', 'detalhes' ],
+      receitas: []
     }
   }
+}
 
 </script>
 
