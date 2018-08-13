@@ -17,6 +17,8 @@
         <ul class="col-2">
           <b-select v-model="$root.$data.perfil" :options="this.$root.$data.perfis" class="mb-2"></b-select>
         </ul>
+
+        {{ $root.$data.perfil }}
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#/admin/user">

@@ -67,7 +67,7 @@ const routes = [
       },
       {
         path: 'conspaciente',
-        name: 'MarcarCons',
+        name: 'consPaciente',
         component: ConsPaciente
       },
       {

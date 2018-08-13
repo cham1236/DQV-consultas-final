@@ -20,17 +20,17 @@
 
       <sidebar-link to="/admin/receitas" v-if="($root.$data.perfil == 'paciente')">
         <i class="nc-icon nc-single-copy-04"></i>
-        <p>Minhas receitas</p>
+        <p>obs: Minhas receitas</p>
       </sidebar-link>
 
       <sidebar-link to="/admin/consultas" v-if="($root.$data.perfil == 'paciente')">
         <i class="nc-icon nc-ambulance"></i>
         <p>Minhas consultas</p>
       </sidebar-link>
-
+ 
       <sidebar-link to="/admin/marcarConsulta" v-if="($root.$data.perfil == 'atendente')">
         <i class="nc-icon nc-notes"></i>
-        <p>Marcar consulta</p>
+        <p>Atendente: Marcar consulta</p>
       </sidebar-link>
 
        <sidebar-link to="/admin/conspaciente" v-if="($root.$data.perfil == 'atendente')">
