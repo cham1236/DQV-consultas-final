@@ -8,7 +8,6 @@ import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
 import Atendimento from 'src/components/Dashboard/Views/Atendimento.vue'
 import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
 import Consultas from 'src/components/Dashboard/Views/Consultas.vue'
-import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import MarcarCons from 'src/components/Dashboard/Views/MarcarCons.vue'
 import ConsPaciente from 'src/components/Dashboard/Views/ConsPaciente.vue'
 import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
@@ -54,11 +53,6 @@ const routes = [
         path: 'consultas',
         name: 'Consultas',
         component: Consultas
-      },
-      {
-        path: 'notifications',
-        name: 'Notifications',
-        component: Notifications
       },
       {
         path: 'marcarConsulta',

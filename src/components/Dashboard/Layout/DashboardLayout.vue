@@ -2,7 +2,9 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      
+
+       <center> <strong> Paciente </strong></center>
+
       <sidebar-link to="/admin/noticias">
         <i class="nc-icon nc-paper-2"></i>
         <p>Noticias</p>
@@ -13,47 +15,53 @@
         <p>Dados Pessoais</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/atendimento" v-if="($root.$data.perfil == 'paciente')">
+      <sidebar-link to="/admin/atendimento">
         <i class="nc-icon nc-notes"></i>
         <p>Agendar Atendimento</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/receitas" v-if="($root.$data.perfil == 'paciente')">
+      <sidebar-link to="/admin/receitas">
         <i class="nc-icon nc-single-copy-04"></i>
-        <p>obs: Minhas receitas</p>
+        <p>Minhas receitas</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/consultas" v-if="($root.$data.perfil == 'paciente')">
+      <sidebar-link to="/admin/consultas">
         <i class="nc-icon nc-ambulance"></i>
         <p>Minhas consultas</p>
       </sidebar-link>
+
+      <br><center><strong> Atendente </strong></center><br>
  
-      <sidebar-link to="/admin/marcarConsulta" v-if="($root.$data.perfil == 'atendente')">
+      <sidebar-link to="/admin/marcarConsulta">
         <i class="nc-icon nc-notes"></i>
-        <p>Atendente: Marcar consulta</p>
-      </sidebar-link>
-
-       <sidebar-link to="/admin/conspaciente" v-if="($root.$data.perfil == 'atendente')">
-        <i class="nc-icon nc-ambulance"></i>
-        <p>Consultas do paciente</p>
-      </sidebar-link>
-
-      <sidebar-link to="/admin/marcarcons" v-if="($root.$data.perfil == 'coordenador')">
-        <i class="nc-icon nc-ambulance"></i>
         <p>Marcar consulta</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/conspaciente" v-if="($root.$data.perfil == 'coordenador')">
+       <sidebar-link to="/admin/conspaciente">
         <i class="nc-icon nc-ambulance"></i>
         <p>Consultas do paciente</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/meusatendimentos" v-if="($root.$data.perfil == 'medico')">
+      <br><center><strong> Coordenador </strong></center><br>
+
+      <sidebar-link to="/admin/marcarConsulta">
+        <i class="nc-icon nc-notes"></i>
+        <p>Marcar consulta</p>
+      </sidebar-link>
+
+      <sidebar-link to="/admin/conspaciente">
         <i class="nc-icon nc-ambulance"></i>
+        <p>Consultas do paciente</p>
+      </sidebar-link>
+
+      <br><center><strong> Médico </strong></center><br>
+
+      <sidebar-link to="/admin/meusatendimentos">
+        <i class="nc-icon nc-bullet-list-67"></i>
         <p>Meus Atendimentos</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/receitasprescritas" v-if="($root.$data.perfil == 'medico')">
+      <sidebar-link to="/admin/receitasprescritas">
         <i class="nc-icon nc-ambulance"></i>
         <p>Receitas Prescritas</p>
       </sidebar-link>

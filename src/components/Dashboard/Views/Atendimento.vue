@@ -8,15 +8,14 @@
               <h4 class="card-title">Agendar Atendimento</h4>
             </template>
             
-            <b-form-fieldset method="POST"> 
               
               <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
               <!--Seleção de médicos-->
-              <b-form-select v-if="selected == 'ginecologista'" v-model="medico" :options="ginecologia"></b-form-select>
-              <b-form-select v-if="selected == 'cardio'" v-model="medico" :options="cardiologista"></b-form-select>
-              <b-form-select v-if="selected == 'dentista'" v-model="medico" :options="dentista"></b-form-select>
-              <b-form-select v-if="selected == 'psicologo'" v-model="medico" :options="psicologia"></b-form-select>
+              <b-form-select v-if="selected == 'ginecologista' " v-model="medico" :options="ginecologia"></b-form-select>
+              <b-form-select v-if="selected == 'cardio' " v-model="medico" :options="cardiologista"></b-form-select>
+              <b-form-select v-if="selected == 'dentista' " v-model="medico" :options="dentista"></b-form-select>
+              <b-form-select v-if="selected == 'psicologo' " v-model="medico" :options="psicologia"></b-form-select>
 
 
               <!--Seleção de Data e Hora Disponível-->
@@ -25,7 +24,6 @@
             
              <!--Confirmar agendamento-->
             <b-button v-if="value != ''" type="submit">Concluir</b-button>
-            </b-form-fieldset>
                          
           </card>
 
@@ -80,7 +78,7 @@
           {value: 'Rodrigo', text: 'Rodrigo'},
           {value: 'Carlos', text: 'Carlos'}              
         ],
-        psocologia: [
+        psicologia: [
           {value: null, text: 'Escolha um médico'},
           {value: 'Maria', text: 'Maria'},
           {value: 'Alice', text: 'Alice'}            
