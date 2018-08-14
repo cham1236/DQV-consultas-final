@@ -19,6 +19,7 @@
     "es6-promise": "^4.1.1",
     "google-maps": "^3.2.1",
     "npm": "^6.2.0",
+    "v-calendar": "^0.9.7",
     "v-tooltip": "^2.0.0-rc.1",
     "vue": "^2.5.2",
     "vue-clickaway": "^2.1.0",

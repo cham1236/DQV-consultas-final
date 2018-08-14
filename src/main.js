@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueResource from 'vue-resource'
+import VCalendar from 'v-calendar'
 
 Vue.use(BootstrapVue)
 Vue.use(VueResource)

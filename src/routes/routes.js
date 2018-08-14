@@ -12,6 +12,7 @@ import MarcarConsulta from 'src/components/Dashboard/Views/MarcarConsulta.vue'
 import ListarConsultas from 'src/components/Dashboard/Views/ListarConsultas.vue'
 import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
 import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescritas.vue'
+import DefinirHorario from 'src/components/Dashboard/Views/DefinirHorario.vue'
 
 const routes = [
   {
@@ -73,6 +74,11 @@ const routes = [
         path: 'receitasprescritas',
         name: 'ReceitasPrescritas',
         component: ReceitasPrescritas
+      },
+      {
+        path: 'definirHorario',
+        name: 'DefinirHorario',
+        component: DefinirHorario
       }
     ]
   },

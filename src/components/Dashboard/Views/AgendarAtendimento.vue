@@ -51,7 +51,7 @@
         especialidade: null,
         medico: null,
         dataCons: null,
-        
+        selected: null,
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
           { value: 'cardio', text: 'Cardiologista' },

@@ -56,7 +56,12 @@
 
       <br><center><strong> Médico </strong></center><br>
 
-      <sidebar-link to="/admin/meusatendimentos">
+      <sidebar-link to="/admin/definirHorario">
+        <i class="nc-icon nc-tag-content"></i>
+        <p>Definir Horarios</p>
+      </sidebar-link>
+
+      <sidebar-link to="/admin/meusAtendimentos">
         <i class="nc-icon nc-bullet-list-67"></i>
         <p>Meus Atendimentos</p>
       </sidebar-link>
