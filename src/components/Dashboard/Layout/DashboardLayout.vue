@@ -15,7 +15,7 @@
         <p>Dados Pessoais</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/atendimento">
+      <sidebar-link to="/admin/agendarAtendimento">
         <i class="nc-icon nc-notes"></i>
         <p>Agendar Atendimento</p>
       </sidebar-link>
@@ -25,7 +25,7 @@
         <p>Minhas receitas</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/consultas">
+      <sidebar-link to="/admin/MinhasConsultas">
         <i class="nc-icon nc-ambulance"></i>
         <p>Minhas consultas</p>
       </sidebar-link>
@@ -37,7 +37,7 @@
         <p>Marcar consulta</p>
       </sidebar-link>
 
-       <sidebar-link to="/admin/conspaciente">
+       <sidebar-link to="/admin/listarConsultas">
         <i class="nc-icon nc-ambulance"></i>
         <p>Consultas do paciente</p>
       </sidebar-link>
@@ -49,7 +49,7 @@
         <p>Marcar consulta</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/conspaciente">
+      <sidebar-link to="/admin/listarConsultas">
         <i class="nc-icon nc-ambulance"></i>
         <p>Consultas do paciente</p>
       </sidebar-link>

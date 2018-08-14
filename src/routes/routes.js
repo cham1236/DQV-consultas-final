@@ -5,11 +5,11 @@ import Login from '../components/GeneralViews/Login.vue'
 // Admin pages
 import Noticias from 'src/components/Dashboard/Views/Noticias.vue'
 import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
-import Atendimento from 'src/components/Dashboard/Views/Atendimento.vue'
+import AgendarAtendimento from 'src/components/Dashboard/Views/AgendarAtendimento.vue'
 import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
-import Consultas from 'src/components/Dashboard/Views/Consultas.vue'
-import MarcarCons from 'src/components/Dashboard/Views/MarcarCons.vue'
-import ConsPaciente from 'src/components/Dashboard/Views/ConsPaciente.vue'
+import MinhasConsultas from 'src/components/Dashboard/Views/MinhasConsultas.vue'
+import MarcarConsulta from 'src/components/Dashboard/Views/MarcarConsulta.vue'
+import ListarConsultas from 'src/components/Dashboard/Views/ListarConsultas.vue'
 import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
 import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescritas.vue'
 
@@ -40,9 +40,9 @@ const routes = [
         component: UserProfile
       },
       {
-        path: 'atendimento',
-        name: 'Atendimento',
-        component: Atendimento
+        path: 'agendarAtendimento',
+        name: 'AgendarAtendimento',
+        component: AgendarAtendimento
       },
       {
         path: 'receitas',
@@ -50,22 +50,22 @@ const routes = [
         component: Receitas
       },
       {
-        path: 'consultas',
-        name: 'Consultas',
-        component: Consultas
+        path: 'minhasConsultas',
+        name: 'MinhasConsultas',
+        component: MinhasConsultas
       },
       {
         path: 'marcarConsulta',
-        name: 'MarcarCons',
-        component: MarcarCons
+        name: 'MarcarConsulta',
+        component: MarcarConsulta
       },
       {
-        path: 'conspaciente',
-        name: 'consPaciente',
-        component: ConsPaciente
+        path: 'listarConsultas',
+        name: 'ListarConsultas',
+        component: ListarConsultas
       },
       {
-        path: 'meusatendimentos',
+        path: 'meusAtendimentos',
         name: 'MeusAtendimentos',
         component: MeusAtendimentos
       },

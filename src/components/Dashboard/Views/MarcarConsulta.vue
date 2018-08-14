@@ -5,17 +5,22 @@
         <div class="col-12">
           <card>
             <template slot="header">
-              <h4 class="card-title">Agendar Atendimento</h4>
+              <h4 class="card-title">Marcar consulta</h4>
             </template>
-            
-              
+
+              CPF do paciente:
+              <b-form-input v-model="CPFPaciente" placeholder="CPF"></b-form-input>
+              <br>
+
+            <b-form-fieldset method="POST"> 
+
               <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
               <!--Seleção de médicos-->
-              <b-form-select v-if="selected == 'ginecologista' " v-model="medico" :options="ginecologia"></b-form-select>
-              <b-form-select v-if="selected == 'cardio' " v-model="medico" :options="cardiologista"></b-form-select>
-              <b-form-select v-if="selected == 'dentista' " v-model="medico" :options="dentista"></b-form-select>
-              <b-form-select v-if="selected == 'psicologo' " v-model="medico" :options="psicologia"></b-form-select>
+              <b-form-select v-if="selected == 'ginecologista'" v-model="medico" :options="ginecologia"></b-form-select>
+              <b-form-select v-if="selected == 'cardio'" v-model="medico" :options="cardiologista"></b-form-select>
+              <b-form-select v-if="selected == 'dentista'" v-model="medico" :options="dentista"></b-form-select>
+              <b-form-select v-if="selected == 'psicologo'" v-model="medico" :options="psicologia"></b-form-select><br>
 
 
               <!--Seleção de Data e Hora Disponível-->
@@ -24,6 +29,7 @@
             
              <!--Confirmar agendamento-->
             <b-button v-if="value != ''" type="submit">Concluir</b-button>
+            </b-form-fieldset>
                          
           </card>
 
@@ -46,10 +52,9 @@
     },
     data () {
       return {
-        especialidade: null,
+        selected: null,
         medico: null,
-        dataCons: null,
-        
+        CPFPaciente: null,
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
           { value: 'cardio', text: 'Cardiologista' },
@@ -59,7 +64,7 @@
         ],
         cardiologista: [
           {value: null, text: 'Escolha um médico'},
-          {value: 'Fernanda', text: 'Fernanda'},
+          {value: 'Marcela', text: 'Fernanda'},
           {value: 'Algusta', text: 'Algusta'},
           {value: 'Ricardo', text: 'Ricardo'},
           {value: 'Renata', text: 'Renata'}              
@@ -81,9 +86,10 @@
         psicologia: [
           {value: null, text: 'Escolha um médico'},
           {value: 'Maria', text: 'Maria'},
-          {value: 'Alice', text: 'Alice'}            
+          {value: 'Alice', text: 'Alice'},            
         ],
         
+        value : '',
         shortcuts: [
           {
             text: 'Today',
@@ -98,14 +104,9 @@
           end: '23:30'
         }
       }
-
-    },
-    methods:{
-      addConsulta: function() {
-      this.$root.$data.consultas.push({especialidade: this.especialidade, medico: this.medico, dataCons: this.dataCons, status: 'Pendente', cpfPaciente: this.$root.$data.CPF});
+      
     }
   }
-}
 </script>
 
 <style>
