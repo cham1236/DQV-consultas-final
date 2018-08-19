@@ -4,9 +4,12 @@ import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueResource from 'vue-resource'
 import VCalendar from 'v-calendar'
+import 'v-calendar/lib/v-calendar.min.css'
 
+// Register component(s)
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
+Vue.use(VCalendar)
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
