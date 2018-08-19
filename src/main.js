@@ -4,9 +4,18 @@ import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueResource from 'vue-resource'
 import VCalendar from 'v-calendar'
+import 'v-calendar/lib/v-calendar.min.css';
 
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
+Vue.use(VCalendar,{
+  firstDayOfWeek: 1,
+  paneWidth: 250,
+  locale:  'pt-BR',
+  datePickerTintColor: "#469536",
+  popoverKeepVisibleOnInput: true
+})
+
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -36,7 +45,8 @@ new Vue({
         cpf: '87262789222'
       }
     ],
-    CPF: '87262789222',
+    email: 'exemplo@ufrpe.br',
+    senha: '123',
     medico: 'Fernanda',
     perfis: [
       {value: 'paciente', text: 'Paciente'},
