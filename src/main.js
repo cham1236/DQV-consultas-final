@@ -4,18 +4,12 @@ import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueResource from 'vue-resource'
 import VCalendar from 'v-calendar'
-import 'v-calendar/lib/v-calendar.min.css';
+import 'v-calendar/lib/v-calendar.min.css'
 
+// Register component(s)
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
-Vue.use(VCalendar,{
-  firstDayOfWeek: 1,
-  paneWidth: 250,
-  locale:  'pt-BR',
-  datePickerTintColor: "#469536",
-  popoverKeepVisibleOnInput: true
-})
-
+Vue.use(VCalendar)
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'

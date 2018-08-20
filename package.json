@@ -26,8 +26,10 @@
     "vue-notifyjs": "^0.2.0",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
+    "vue-simple-calendar": "^3.0.2",
     "vue2-datepicker": "^2.0.4",
-    "vue2-google-maps": "^0.8.4"
+    "vue2-google-maps": "^0.8.4",
+    "vue2-slot-calendar": "^2.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
