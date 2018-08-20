@@ -9,14 +9,13 @@ import 'v-calendar/lib/v-calendar.min.css'
 // Register component(s)
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
-Vue.use(VCalendar,{
+Vue.use(VCalendar, {
   firstDayOfWeek: 1,
   paneWidth: 250,
-  locale:  'pt-BR',
-  datePickerTintColor: "#469536",
+  locale: 'pt-BR',
+  datePickerTintColor: '#469536',
   popoverKeepVisibleOnInput: true
 })
-
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
