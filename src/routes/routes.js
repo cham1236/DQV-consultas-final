@@ -9,6 +9,7 @@ import AgendarAtendimento from 'src/components/Dashboard/Views/AgendarAtendiment
 import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
 import MinhasConsultas from 'src/components/Dashboard/Views/MinhasConsultas.vue'
 import MarcarConsulta from 'src/components/Dashboard/Views/MarcarConsulta.vue'
+import MarcarConsultaPaciente from 'src/components/Dashboard/Views/MarcarConsultaPaciente.vue'
 import ListarConsultas from 'src/components/Dashboard/Views/ListarConsultas.vue'
 import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
 import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescritas.vue'
@@ -59,6 +60,11 @@ const routes = [
         path: 'marcarConsulta',
         name: 'MarcarConsulta',
         component: MarcarConsulta
+      },
+      {
+        path: 'marcarConsultaPaciente',
+        name: 'MarcarConsultaPaciente',
+        component: MarcarConsultaPaciente
       },
       {
         path: 'listarConsultas',
