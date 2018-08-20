@@ -82,7 +82,7 @@
           address: 'Rua cento e um, Maranguape 2',
           city: 'Paulista',
           country: 'Brasil',
-          postalCode: '53421-490',
+          postalCode: '53421-490'
         }
       }
     },

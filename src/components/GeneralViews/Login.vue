@@ -6,19 +6,18 @@
                 <b-card title="DQV Consultas"
                         class="login-panel panel panel-default text-center">
                     <div class="panel-body">
-                        <b-form-fieldset>
+                        <b-form>
 
-                                <b-form-group>
-                                    <b-form-input v-model="cpf" placeholder=" CPF" name="cpf" type="number" autofocus></b-form-input>
+                                <b-form-group feedback="invalid">
+                                    <b-form-input v-model="email" placeholder="E-mail" name="email" type="email" autofocus></b-form-input>
                                 </b-form-group>
                                 <b-form-group>
                                     <b-form-input v-model="senha" placeholder="Password" name="password" type="password"></b-form-input>
                                 </b-form-group>
-                                
-                                
-                                <b-btn block="true" variant="success" href="#/admin/noticias">Login</b-btn>
+                                                                
+                                <b-btn block="true" variant="success " v-on:click="validarLogin">Login</b-btn>
                             
-                        </b-form-fieldset>
+                        </b-form>
                     </div>
                 </b-card>
             </b-col>
@@ -35,15 +34,15 @@ export default {
  data (){
   return{
     msg: 'Módulo de Consultas, Bem Vindo(a)!',
-    cpf: null,
+    email: null,
     senha: null
     }
   },
 
   methods: {
     validarLogin: function (){
-      if(this.cpf == this.$root.$data.CPF){
-        return true;
+      if((this.email == this.$root.$data.email) && (this.senha == this.$root.$data.senha)){
+        window.open('#/admin/noticias', "_self")
       }else{
         return alert("Login Inválido");
       }
