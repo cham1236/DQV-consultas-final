@@ -25,6 +25,7 @@
           <b-col>{{ row.item.cpfPaciente }}</b-col>
         </b-row>
       </b-card>
+      
     </template>
 
   </b-table>

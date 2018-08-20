@@ -9,10 +9,10 @@
                         <b-form>
 
                                 <b-form-group feedback="invalid">
-                                    <b-form-input v-model="email" placeholder="E-mail" name="email" type="email" autofocus></b-form-input>
+                                    <b-form-input v-model="pessoa.email" placeholder="E-mail" name="email" type="email" autofocus></b-form-input>
                                 </b-form-group>
                                 <b-form-group>
-                                    <b-form-input v-model="senha" placeholder="Password" name="password" type="password"></b-form-input>
+                                    <b-form-input v-model="pessoa.pass" placeholder="Password" name="password" type="password"></b-form-input>
                                 </b-form-group>
                                                                 
                                 <b-btn block="true" variant="success " v-on:click="validarLogin">Login</b-btn>
@@ -34,18 +34,36 @@ export default {
  data (){
   return{
     msg: 'Módulo de Consultas, Bem Vindo(a)!',
-    email: null,
-    senha: null
+    pessoa:{
+      email: null,
+      pass: null
+    }
+    
     }
   },
 
   methods: {
     validarLogin: function (){
-      if((this.email == this.$root.$data.email) && (this.senha == this.$root.$data.senha)){
+      /*if((this.email == this.$root.$data.email) && (this.senha == this.$root.$data.senha)){
         window.open('#/admin/noticias', "_self")
-      }else{
+     }else{
         return alert("Login Inválido");
-      }
+      }*/
+      this.$http.post('http://localhost:9000/pessoa/login', this.pessoa).then(function (response) {
+          // Success
+          this.$root.$data.pessoa=response.data;
+          console.log(response.data);
+          window.open('#/admin/noticias', "_self");
+        },function (response) {
+          // Error
+          console.log(response.data)
+        });
+        this.$http.get('http://localhost:9000/agendamento/pessoa/'+this.$root.$data.pessoa.id).then(response => {
+        this.$root.$data.minhasConsultas = response.body;
+        console.log(response.body);
+        }, response => {
+            // error callback
+        })
     }
  }
   

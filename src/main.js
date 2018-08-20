@@ -39,6 +39,8 @@ new Vue({
   render: h => h(App),
   router,
   data: {
+    pessoa:{},
+    minhasConsultas:{},
     usuario: [
       {
         nome: 'Carlos Henrique de Azevedo',
