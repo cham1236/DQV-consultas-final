@@ -159,8 +159,9 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
       Card
     },
     created () {
-      this.$http.get('http://localhost:9000/coordenador/'+this.$root.$data.pessoa).then(response => {
-        this.coordenador = response.data;
+      this.$http.get('http://localhost:9000/coordenador/ativos').then(response => {
+        this.$root.$data.coordenadores = response.data;
+        this.coordenadores=this.$root.$data.coordenadores;
         console.log();
 
         }, response => {
