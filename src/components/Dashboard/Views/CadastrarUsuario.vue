@@ -2,52 +2,101 @@
     <card>
     <h2  slot="header" class="b-container-title">Cadastrar Usuario</h2>
     <b-form>
+
+      <h3>Endereço</h3>
+      <div class="row">
+        <div class="col-md-8">
+          <fg-input type="text"
+                    label="Logradouro"
+                    placeholder="Logradouro"
+                    v-model="logradouro">
+          </fg-input>
+        </div>
+        <div class="col-md-4">
+          <fg-input type="text"
+                    label="numero"
+                    placeholder="Número"
+                    v-model="numero">
+          </fg-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <fg-input type="text"
+                    label="Cidade"
+                    placeholder="Cidade"
+                    v-model="cidade">
+          </fg-input>
+        </div>
+        <div class="col-md-4">
+          <fg-input type="text"
+                    label="Pais"
+                    placeholder="Pais"
+                    v-model="uf">
+          </fg-input>
+        </div>
+        <div class="col-md-4">
+          <fg-input type="text"
+                    label="CEP"
+                    placeholder="CEP"
+                    v-model="cep">
+          </fg-input>
+        </div>
+      </div>
+
+      <b-row>
+        <b-col md="12">
+          <b-btn  block=true v-on:click="addEndereco">Cadastrar Endereco</b-btn>
+        </b-col>  
+      </b-row>
+      <b-row>        
       <h3>Dados Pessoais</h3>
       <div class="row">
         <div class="col-md-12">
-          <b-input type="email"
+          <fg-input type="email"
                     label="E-mail"
                     placeholder="john.doe@ufrpe.br"
                     v-model="email">
-          </b-input>
+          </fg-input>
         </div>
         <div class="col-md-6">
-          <b-input type="password"
+          <fg-input type="password"
                     label="Senha"
                     placeholder="Senha123"
                     v-model="pass">
-          </b-input>
+          </fg-input>
         </div>
         <div class="col-md-6">
-          <b-input type="password"
+          <fg-input type="password"
                     label="Confirmar Senha"
                     placeholder="Senha123"
                     v-model="pass2">
-          </b-input>
+          </fg-input>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <b-input type="text"
+          <fg-input type="text"
                     label="Nome Completo"
                     placeholder="John Doe"
                     v-model="nome">
-          </b-input>
+          </fg-input>
         </div>
         <div class="col-md-4">
-          <b-input type="text"
+          <fg-input type="text"
                     label="RG"
                     placeholder="RG"
                     v-model="rg">
-          </b-input>
+          </fg-input>
         </div>
     
         <div class="col-md-4">
-          <b-input type="text"
+          <fg-input type="text"
                     label="CPF"
                     placeholder="CPF"
                     v-model="cpf">
-          </b-input>
+          </fg-input>
         </div>
         <div class="col-md-4">
             <label for="#sexo">Sexo</label>
@@ -62,58 +111,27 @@
         </div>
 
         <div class="col-md-4">
-          <b-input type="text"
+          <fg-input type="text"
                     label="Telefone"
                     placeholder="(81) 99999-9999"
                     v-model="telefone">
-          </b-input>
+          </fg-input>
         </div>
 
         <div class="col-md-4">
           <label>Data de Nascimento</label>
           <v-date-picker mode='single'
-                         v-model="dataSelecionada">
+                         v-model='dataNascimento'>
           </v-date-picker> 
         </div>
       </div>
-      <h3>Endereço</h3>
-      <div class="row">
-        <div class="col-md-12">
-          <b-input type="text"
-                    label="Endereço"
-                    placeholder="Logradouro"
-                    v-model="endereco.logradouro">
-          </b-input>
-        </div>
-      </div>
+     
+      </b-row>
 
-      <div class="row">
-        <div class="col-md-4">
-          <b-input type="text"
-                    label="Cidade"
-                    placeholder="Cidade"
-                    v-model="endereco.cidade">
-          </b-input>
-        </div>
-        <div class="col-md-4">
-          <b-input type="text"
-                    label="Pais"
-                    placeholder="Pais"
-                    v-model="endereco.uf">
-          </b-input>
-        </div>
-        <div class="col-md-4">
-          <b-input type="text"
-                    label="CEP"
-                    placeholder="CEP"
-                    v-model="endereco.cep">
-          </b-input>
-        </div>
-      </div>
       <b-row>
-        <b-col>
-          <b-btn variant="success" block=true v-on:click="addUsuario">Cadastrar</b-btn>
-        </b-col>
+          <b-col md="12">
+          <b-btn  block=true variant="primary" v-on:click="addEndereco">Cadastrar Usuário</b-btn>
+        </b-col> 
       </b-row>
       <div class="clearfix"></div>
     </b-form>
@@ -129,16 +147,23 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
    data () {
       return{
 
-        email: null,
-        pass: null,
-        pass2: null,
-        nome: null,
-        rg: null,
-        cpf: null,
-        telefone: null,
-        sexo: null,
-        estadoCivil: null,
+        email: '' ,
+        pass: '',
+        pass2: '',
+        nome: '',
+        rg: '',
+        cpf: '',
+        telefone: '',
+        sexo: '',
+        estadoCivil: '',
         dataNascimento: null,
+
+
+        cep: null,
+        logradouro: null,
+        numero: null,
+        cidade: null,
+        uf: null,
 
         endereco: {
           cep: null,
@@ -178,16 +203,31 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
           {text: 'Divorciado', value:'DIVORCIADO'},
           {text: 'Viúvo', value:'VIUVO'}
         ],
-        
-        dataSelecionada: null,
-
 
       }
    },
 
    methods: {
 
-     addUsuario: function (){
+      addEndereco: function (){
+        this.endereco.cep = this.cep;
+        this.endereco.logradouro = this.logradouro;
+        this.endereco.numero = this.numero;
+        this.endereco.cidade = this.cidade;
+        this.endereco.uf = this.uf;
+
+        this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
+          // Success
+          this.user.endereco = response.data;
+          console.log(response.data);
+        },function (response) {
+          // Error
+          console.log(response.data)
+        });
+        
+      },
+
+      addUsuario: function (){
         this.user.email = this.email;
         this.user.pass = this.pass;
         this.user.nome = this.nome;
@@ -196,9 +236,31 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
         this.user.sexo = this.sexo;
         this.user.telefone = this.telefone;
         this.user.dataNascimento = this.dataNascimento;
-        this.user.endereco = this.endereco;
         this.user.estadoCivil = this.estadoCivil;
         console.log(this.user)
+     },
+
+
+
+     cadastrar: function (){
+       
+       this.user.email = this.email;
+        this.user.pass = this.pass;
+        this.user.nome = this.nome;
+        this.user.rg = this.rg;
+        this.user.cpf = this.cpf;
+        this.user.sexo = this.sexo;
+        this.user.telefone = this.telefone;
+        this.user.dataNascimento = this.dataNascimento;
+        this.user.estadoCivil = this.estadoCivil;
+       
+        this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
+          // Success
+          console.log(response.data);
+        },function (response) {
+          // Error
+          console.log(response.data)
+        });
      }
 
    }

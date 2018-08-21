@@ -16,7 +16,7 @@ import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescrita
 import DefinirHorario from 'src/components/Dashboard/Views/DefinirHorario.vue'
 import CadastrarUsuario from 'src/components/Dashboard/Views/CadastrarUsuario.vue'
 import ConfirmarHorario from 'src/components/Dashboard/Views/ConfirmarHorario.vue'
-
+import CadastrarEspecialista from 'src/components/Dashboard/Views/CadastrarEspecialista.vue'
 const routes = [
   {
     path: '/',
@@ -92,6 +92,11 @@ const routes = [
         path: 'cadastrarUsuario',
         name: 'CadastrarUsuario',
         component: CadastrarUsuario
+      },
+      {
+        path: 'cadastrarEspecialista',
+        name: 'CadastrarEspecialista',
+        component: CadastrarEspecialista
       },
       {
         path: 'confirmarHorario',
