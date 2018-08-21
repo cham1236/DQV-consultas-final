@@ -28,7 +28,7 @@
             </b-form-fieldset>
                          
           </card>
-
+          
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@
       Card,
       DatePicker
     },
+    
     data () {
       return {
         selected: null,

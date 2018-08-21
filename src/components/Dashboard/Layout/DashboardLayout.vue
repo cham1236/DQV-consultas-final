@@ -111,7 +111,17 @@
         if (this.$sidebar.showSidebar) {
           this.$sidebar.displaySidebar(false)
         }
-      }
+      },
+      getConsultas: function (){
+        
+        
+        this.$http.get('http://localhost:9000/agendamento/pessoa/3').then(response => {
+        this.$root.$data.minhasConsultas = response.body;
+        console.log(response.body);
+        }, response => {
+            console.log(response.mensage);
+        })
+    }
     }
   }
 

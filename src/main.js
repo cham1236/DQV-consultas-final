@@ -41,6 +41,9 @@ new Vue({
   data: {
     pessoa:{},
     minhasConsultas:{},
+    consultaId:0,
+    consulta:'',
+    minhasReceitas:{},
     usuario: [
       {
         nome: 'Carlos Henrique de Azevedo',
