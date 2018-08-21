@@ -127,6 +127,7 @@
             </v-date-picker> 
           </div>
         </b-row>
+      <h3>Pertinente ao Cordenador</h3>
 
       <h3>Pertinente ao Especialista</h3>   
       <b-row>
@@ -138,8 +139,8 @@
             <label for="#coordenador"></label>
             <b-select id="coordenador" v-model="coordenador" :options="coordenadores"></b-select>
           </div>  
-                  
       </b-row> 
+      
 
         <b-row>
           <b-col md="12">
@@ -159,7 +160,7 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
       Card
     },
     created () {
-      this.$http.get('http://localhost:9000/coordenador/'+this.$root.$data.pessoa).then(response => {
+      this.$http.get('http://localhost:9000/coordenador/ativos').then(response => {
         this.coordenador = response.data;
         console.log();
 

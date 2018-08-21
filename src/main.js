@@ -38,6 +38,7 @@ new Vue({
   render: h => h(App),
   router,
   data: {
+    coordenadores:{},
     pessoa:{},
     minhasConsultas:{},
     consultaId:0,
