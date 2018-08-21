@@ -62,6 +62,11 @@
         <p>Consultas do paciente</p>
       </sidebar-link>
 
+      <sidebar-link to="/admin/confirmarHorario">
+        <i class="nc-icon nc-tag-content"></i>
+        <p>Confirmar Horarios</p>
+      </sidebar-link>
+
       <br><center><strong> Médico </strong></center><br>
 
       <sidebar-link to="/admin/definirHorario">
