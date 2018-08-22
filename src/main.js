@@ -5,6 +5,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueResource from 'vue-resource'
 import VCalendar from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
+import axios from 'axios'
 
 // Register component(s)
 Vue.use(BootstrapVue)
@@ -37,8 +38,9 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router,
+  axios,
   data: {
-    coordenadores:{},
+    coordenadores:[],
     pessoa:{},
     minhasConsultas:{},
     consultaId:0,

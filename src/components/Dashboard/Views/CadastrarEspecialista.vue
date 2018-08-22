@@ -31,8 +31,8 @@
           </div>
           <div class="col-md-4">
             <fg-input type="text"
-                      label="Pais"
-                      placeholder="Pais"
+                      label="UF"
+                      placeholder="UF"
                       v-model="uf">
             </fg-input>
           </div>
@@ -45,11 +45,11 @@
           </div>
         </div>
 
-        <b-row>
+        <!-- <b-row>
           <b-col md="12">
             <b-btn  block=true v-on:click="addEndereco">Cadastrar Endereco</b-btn>
           </b-col>  
-        </b-row>
+        </b-row> -->
         
         <h3>Dados Pessoais</h3>
         <b-row>        
@@ -136,7 +136,13 @@
           </div>
           <div class="col-md-4">
             <label for="#coordenador"></label>
-            <b-select id="coordenador" v-model="coordenador" :options="coordenadores"></b-select>
+            <b-select id="coordenador" v-model="coordenador" :options="this.listaCoordenadores"></b-select>
+          </div>
+          <div class="col-md-3">
+            <label>Data de Adimissão</label>
+            <v-date-picker mode='single'
+                          v-model='dataAdmissao'>
+            </v-date-picker> 
           </div>  
                   
       </b-row> 
@@ -153,20 +159,34 @@
 </template>
 <script>
 import Card from 'src/components/UIComponents/Cards/Card.vue'
+const axios=require('axios') 
 
   export default {
     components: {
       Card
     },
     created () {
-      this.$http.get('http://localhost:9000/coordenador/ativos').then(response => {
-        this.$root.$data.coordenadores = response.data;
-        this.coordenadores=this.$root.$data.coordenadores;
-        console.log();
-
-        }, response => {
-            console.log(response);
+      axios.get('http://localhost:9000/coordenador/ativos').then(response => {
+        this.coordenadores = response.data;
+        this.coordenadores.map(coordenador => {
+          this.coord=coordenador;
+          this.listaCoordenadores.push({value: coordenador.id, text: coordenador.nome});
+          
         })
+        
+        // this.$root.$data.coordenadores;
+        console.log(this.coordenadores);
+        
+        }, error => {
+            console.log(error);
+        });
+        // for (i = 0; i < this.coordenadores.length; i++) { 
+        //     this.coord=this.coordenadores[i];
+        //     this.listaCoordenadores.push({value: this.coordenadores[i].id, text: this.coordenadores[i].nome});
+        //     console.log(this.coordenadores[i].id);
+        // }
+        // console.log(this.coordenadores);
+        
     },
    data () {
       return{
@@ -181,6 +201,8 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
         sexo: '',
         estadoCivil: '',
         dataNascimento: null,
+        dataAdmissao: null,
+        especialidade: null,
 
 
         cep: null,
@@ -209,9 +231,10 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
           dataNascimento: null,
           dataInicio: null,
           dataFim: null,
-          coordenador: null,
-          agendamentoConsultaPaciente: [],
-          endereco: {}            
+          coordenador: false,
+          endereco: {},
+          dataAdmissao: null,
+          especialidade: null            
         },
 
         sexo: null,
@@ -231,11 +254,12 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
           { value: 'ASSISTENTE_SOCIAL', text: 'Assistente Social' },
           { value: 'PSICOLOGO', text: 'Psicólogo' },
           { value: 'NUTRICIONISTA', text: 'Nutricionista' },
-          { value: 'ORTODONTISTA', text: 'Ortodontista' },
-          { value: 'MEDICO', text: 'Médico' }
+          { value: 'ORTODONTISTA', text: 'Ortodontista' }
         ],
+        listaCoordenadores: [],
         coordenador: {},
-        coordenadores: [{}]
+        coord:'',
+        coordenadores: [],
       }
    },
 
@@ -260,7 +284,7 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
       },
      cadastrarPessoa: function (){
        
-       this.user.email = this.email;
+        this.user.email = this.email;
         this.user.pass = this.pass;
         this.user.nome = this.nome;
         this.user.rg = this.rg;
@@ -269,15 +293,38 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
         this.user.telefone = this.telefone;
         this.user.dataNascimento = this.dataNascimento;
         this.user.estadoCivil = this.estadoCivil;
-       
-        this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
-          // Success
-          console.log(response.data);
-        },function (response) {
-          // Error
-          console.log(response.data)
+        this.user.especialidade = this.especialidade;
+        this.user.dataAdmissao = this.dataAdmissao;
+        
+        this.endereco.cep = this.cep;
+        this.endereco.logradouro = this.logradouro;
+        this.endereco.numero = this.numero;
+        this.endereco.cidade = this.cidade;
+        this.endereco.uf = this.uf;
+
+        axios.get('http://localhost:9000/coordenador/' + 1).then(response => {
+          this.user.coordenador = false;
+          this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
+            // Success
+            this.user.endereco = response.data;
+            this.$http.post('http://localhost:9000/especialista/' + this.coordenador, this.user).then(function (response) {
+              window.open('#/admin/noticias', "_self");
+              console.log(response.data);
+            },function (error) {
+              // Error
+              console.log(response.error)
+            });
+          },function (error) {
+            // Error
+            console.log(response.error)
+          });
+            
+            
+
+        }, error => {
+            console.log(error);
         });
-     }
+     },
 
    }
    

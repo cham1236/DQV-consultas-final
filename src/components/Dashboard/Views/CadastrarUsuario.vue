@@ -45,13 +45,14 @@
         </div>
       </div>
 
-      <b-row>
+      <!-- <b-row>
         <b-col md="12">
           <b-btn  block=true v-on:click="addEndereco">Cadastrar Endereco</b-btn>
         </b-col>  
-      </b-row>
+      </b-row> -->
       <b-row>        
       <h3>Dados Pessoais</h3>
+      <br></br>
       <div class="row">
         <div class="col-md-12">
           <fg-input type="email"
@@ -130,7 +131,7 @@
 
       <b-row>
           <b-col md="12">
-          <b-btn  block=true variant="primary" v-on:click="addEndereco">Cadastrar Usuário</b-btn>
+          <b-btn  block=true variant="primary" v-on:click="cadastrar">Cadastrar Usuário</b-btn>
         </b-col> 
       </b-row>
       <div class="clearfix"></div>
@@ -185,8 +186,7 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
           dataNascimento: null,
           dataInicio: null,
           dataFim: null,
-          coordenador: null,
-          agendamentoConsultaPaciente: [],
+          coordenador: false,
           endereco: {}            
         },
 
@@ -253,14 +253,31 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
         this.user.telefone = this.telefone;
         this.user.dataNascimento = this.dataNascimento;
         this.user.estadoCivil = this.estadoCivil;
+
+        this.endereco.cep = this.cep;
+        this.endereco.logradouro = this.logradouro;
+        this.endereco.numero = this.numero;
+        this.endereco.cidade = this.cidade;
+        this.endereco.uf = this.uf;
        
-        this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
+        
+        this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
           // Success
-          console.log(response.data);
+          this.user.endereco = response.data;
+          this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
+            // Success
+            console.log(response.data);
+          },function (response) {
+            // Error
+            console.log(response.data)
+          });
+
         },function (response) {
           // Error
           console.log(response.data)
         });
+        
+        
      }
 
    }

@@ -13,7 +13,7 @@
               Codigo: {{consulta.consulta.id}}
           </p>
           <div class="row">  
-            <div class="col-md-10"><a href="#" class="card-link" v-on:click="this.$root.$data.consultaId=consulta.consulta.id" >Detalhes</a></div>
+            <div class="col-md-10"><b-button class="card-link" v-on:click="verDetalhe (consulta.consulta.id)" >Detalhes</b-button></div>
           </div>
       </b-card>
     </div>
@@ -27,10 +27,11 @@
       this.$http.get('http://localhost:9000/agendamento/pessoa/'+this.$root.$data.pessoa.id).then(response => {
         this.$root.$data.minhasConsultas = response.body;
         console.log(this.$root.$data.pessoa.id);
+        this.consultas=this.$root.$data.minhasConsultas;
         }, response => {
             console.log(response);
         })
-        this.consultas=this.$root.$data.minhasConsultas;
+        
     },
     
     data(){
@@ -45,6 +46,9 @@
     },
 
     methods: {
+      verDetalhe (id) {
+        this.$router.push('/admin/MinhasConsultas/' + id)
+      },
       setBool: function() {
         if (this.bool == true) {
           this.bool = false
