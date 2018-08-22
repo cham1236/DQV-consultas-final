@@ -9,13 +9,15 @@ import AgendarAtendimento from 'src/components/Dashboard/Views/AgendarAtendiment
 import Receitas from 'src/components/Dashboard/Views/Receitas.vue'
 import MinhasConsultas from 'src/components/Dashboard/Views/MinhasConsultas.vue'
 import MarcarConsulta from 'src/components/Dashboard/Views/MarcarConsulta.vue'
+import MarcarConsultaPaciente from 'src/components/Dashboard/Views/MarcarConsultaPaciente.vue'
 import ListarConsultas from 'src/components/Dashboard/Views/ListarConsultas.vue'
 import MeusAtendimentos from 'src/components/Dashboard/Views/MeusAtendimentos.vue'
 import ReceitasPrescritas from 'src/components/Dashboard/Views/ReceitasPrescritas.vue'
 import DefinirHorario from 'src/components/Dashboard/Views/DefinirHorario.vue'
 import CadastrarUsuario from 'src/components/Dashboard/Views/CadastrarUsuario.vue'
 import ConfirmarHorario from 'src/components/Dashboard/Views/ConfirmarHorario.vue'
-
+import CadastrarEspecialista from 'src/components/Dashboard/Views/CadastrarEspecialista.vue'
+import Consulta from 'src/components/Dashboard/Views/Consulta.vue'
 const routes = [
   {
     path: '/',
@@ -55,12 +57,23 @@ const routes = [
       {
         path: 'minhasConsultas',
         name: 'MinhasConsultas',
-        component: MinhasConsultas
+        component: MinhasConsultas,
+      },
+      {
+        path: 'minhasConsultas/:id',
+        name: 'Consulta',
+        component: Consulta,
+        props: true    
       },
       {
         path: 'marcarConsulta',
         name: 'MarcarConsulta',
         component: MarcarConsulta
+      },
+      {
+        path: 'marcarConsultaPaciente',
+        name: 'MarcarConsultaPaciente',
+        component: MarcarConsultaPaciente
       },
       {
         path: 'listarConsultas',
@@ -86,6 +99,11 @@ const routes = [
         path: 'cadastrarUsuario',
         name: 'CadastrarUsuario',
         component: CadastrarUsuario
+      },
+      {
+        path: 'cadastrarEspecialista',
+        name: 'CadastrarEspecialista',
+        component: CadastrarEspecialista
       },
       {
         path: 'confirmarHorario',

@@ -58,12 +58,6 @@ export default {
           // Error
           console.log(response.data)
         });
-        this.$http.get('http://localhost:9000/agendamento/pessoa/'+this.$root.$data.pessoa.id).then(response => {
-        this.$root.$data.minhasConsultas = response.body;
-        console.log(response.body);
-        }, response => {
-            // error callback
-        })
     }
  }
   

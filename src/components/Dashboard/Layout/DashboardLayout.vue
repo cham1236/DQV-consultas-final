@@ -29,8 +29,16 @@
         <i class="nc-icon nc-ambulance"></i>
         <p>Minhas consultas</p>
       </sidebar-link>
-
-      <br><center><strong> Atendente </strong></center><br>
+      
+      <sidebar-link to="/admin/marcarConsultaPaciente">
+        <i class="nc-icon nc-notes"></i>
+        <p>Marcar consulta</p>
+      </sidebar-link>
+      
+      <div v-if="this.$root.$data.pessoa.situacao==='ATIVO'">
+        <br><center><strong> Atendente </strong></center><br>
+      </div>
+      
  
       <sidebar-link to="/admin/marcarConsulta">
         <i class="nc-icon nc-notes"></i>
@@ -108,7 +116,17 @@
         if (this.$sidebar.showSidebar) {
           this.$sidebar.displaySidebar(false)
         }
-      }
+      },
+      getConsultas: function (){
+        
+        
+        this.$http.get('http://localhost:9000/agendamento/pessoa/3').then(response => {
+        this.$root.$data.minhasConsultas = response.body;
+        console.log(response.body);
+        }, response => {
+            console.log(response.mensage);
+        })
+    }
     }
   }
 
