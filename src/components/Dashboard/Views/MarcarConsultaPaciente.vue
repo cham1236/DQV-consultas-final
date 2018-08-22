@@ -29,8 +29,8 @@
              
              <!--Seleção de Data e Hora Disponível-->
 
-             <date-picker v-if="medico != null" v-model="value" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
-            
+             <v-date-picker :mode='single' :availableDates='[new Date(),new Date(2018,7,25)]' v-model="dataConsulta"></v-date-picker>             
+              {{dataConsulta}}
              <!--Confirmar agendamento-->
             <b-button v-if="value != ''" type="submit">Concluir</b-button>
             </b-form-fieldset>
@@ -64,6 +64,7 @@
         medicoSelecionado: null,
         especialistas: [],
         CPFPaciente: null,
+        dataConsulta:"",
         diariasEspecialistas: [],
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
