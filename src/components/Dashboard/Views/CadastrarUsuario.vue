@@ -52,7 +52,6 @@
       </b-row> -->
       <b-row>        
       <h3>Dados Pessoais</h3>
-      <br></br>
       <div class="row">
         <div class="col-md-12">
           <fg-input type="email"
