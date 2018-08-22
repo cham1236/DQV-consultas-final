@@ -1,59 +1,60 @@
 <template>
+  <card>
+    <b-row>
+      <b-col  md="4">
+      <label for="#diaria">Selecione Diária</label>
+      <v-date-picker
+          id="diaria"
+          mode='single'
+          v-model='dataConsulta'
+          show-caps
+          :disabled-dates='{ weekdays: [1, 7] }'
+          :min-date='new Date()'>
+      </v-date-picker>
+      </b-col>
+      <b-col md="4">
+        <fg-input type="number"
+                    label="Duração das Consultas (em Minutos)"
+                    placeholder="30"
+                    v-model="tempoConsulta">
+          </fg-input>
+      </b-col>
+      <b-col md='4'>
+        <br><b-btn variant="primary" block v-on:click="pegarHorarios">Cadastrar Diaria</b-btn>
+      </b-col>
+    </b-row>
 
-<div>
-<b-row class="justify-content-md-center">
-<b-col cols="3">
-<v-date-picker
-    mode='single'
-    v-model='dataConsulta'
-    show-caps
-    :disabled-dates='{ weekdays: [1, 7] }'>
-</v-date-picker>
-</b-col>
-
-<b-col>
-<b-form-select v-model="horaInicio" :options="horarios" class="mb-3" />
-</b-col>
-
-<b-col>
-<b-form-select v-model="horaFim" :options="horarios" class="mb-3" />
-</b-col>
-
-<b-col md="2">
-<button class="btn btn-success" v-on:click="addHorarios">Adicionar</button>
-</b-col>
-
-</b-row>
-
-<b-row>
-<b-col>
-<br><br><b-table :items="arrayHorarios"></b-table>
-</b-col>
-</b-row>
-
-</div>
+    <b-row>
+     <b-col>
+         <b-table :items="horarios"></b-table>
+      </b-col>
+    </b-row>
+  </card>
 </template>
 
 <script>
+import Card from 'src/components/UIComponents/Cards/Card.vue'
+const axios=require('axios') 
 
+   
 export default {
+  components:{
+      Card
+  },
   data() {
+    
     return {
-      dataConsulta: new Date(),
-      arrayHorarios:[],
-      horarios:[
-          { value: '8:00', text: '8:00 da manhã' },
-          { value: '8:30', text: '8:30 da manhã' },
-          { value: '9:00', text: '9:00 da manhã' },
-          { value: '9:30', text: '9:30 da manhã' },
-          { value: '10:00', text: '10:00 da manhã' },
-          { value: '10:30', text: '10:30 da manhã' },
-          { value: '11:00', text: '11:00 da manhã' },
-          { value: '11:30', text: '11:30 da manhã' },
-          { value: '12:00', text: '12:00 da manhã' },
-          { value: '12:30', text: '12:30 da manhã' },
-      ]
+      dataConsulta: null,
+      tempoConsulta: null,
+      horarios: [],
 
+      diaria: {
+        diaria: null,
+        tempoConsulta: null,
+        validado: false,
+        aprovado: false
+
+      }
     };
   },
   methods:{
@@ -64,6 +65,26 @@ export default {
           horaFim: this.horaFim, 
           status: 'Pendente'
           });
+    },
+
+    pegarHorarios: function(){
+      this.diaria.diaria = this.dataConsulta;
+      this.diaria.tempoConsulta = this.tempoConsulta;
+      axios.post('http://localhost:9000/diaria'/ + this.$root.$data.pessoa.id).then(response => {
+        this.diaria = response.data;
+        axios.get('http://localhost:9000/diariaespecialista/' + this.diaria.id).then(function (response) {
+            // Success
+            this.horarios = response.data;
+          },function (error) {
+            // Error
+            console.log(response.error)
+          });      
+        // this.$root.$data.coordenadores;
+        console.log(this.coordenadores);
+        
+        }, error => {
+            console.log(error);
+        });
     }
   }
 };
