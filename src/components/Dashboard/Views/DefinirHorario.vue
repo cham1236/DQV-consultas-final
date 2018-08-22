@@ -44,9 +44,10 @@ export default {
   data() {
     
     return {
+      sadCOmmand: "",
       dataConsulta: null,
       tempoConsulta: null,
-      horarios: [],
+      horarios: null,
 
       diaria: {
         diaria: null,
@@ -70,21 +71,22 @@ export default {
     pegarHorarios: function(){
       this.diaria.diaria = this.dataConsulta;
       this.diaria.tempoConsulta = this.tempoConsulta;
-      axios.post('http://localhost:9000/diaria'/ + this.$root.$data.pessoa.id).then(response => {
+      axios.post('http://localhost:9000/diaria/' + this.$root.$data.pessoa.id, this.diaria).then(response => {
         this.diaria = response.data;
-        axios.get('http://localhost:9000/diariaespecialista/' + this.diaria.id).then(function (response) {
+        this.$http.get('http://localhost:9000/horario/diariaespecialista/' + this.diaria.id).then(function (response) {
             // Success
-            this.horarios = response.data;
+            this.horarios = response.body;
+            console.log(response.data)
           },function (error) {
             // Error
             console.log(response.error)
           });      
         // this.$root.$data.coordenadores;
-        console.log(this.coordenadores);
         
         }, error => {
             console.log(error);
         });
+        // this.horarios = this.$root.$data.horarios;
     }
   }
 };
