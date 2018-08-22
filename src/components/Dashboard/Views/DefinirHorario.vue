@@ -31,6 +31,10 @@
 </b-col>
 </b-row>
 
+<b-col align-self="end">
+<button class="btn btn-success" v-on:click="addHorarios">Adicionar</button>
+</b-col>
+
 </div>
 </template>
 
@@ -59,7 +63,7 @@ export default {
   methods:{
       addHorarios: function() {
       this.arrayHorarios.push({
-          dataConsulta: this.dataConsulta.toDateString, 
+          dataConsulta: this.dataConsulta, 
           horaInicio: this.horaInicio, 
           horaFim: this.horaFim, 
           status: 'Pendente'
