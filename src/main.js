@@ -15,7 +15,7 @@ Vue.use(VCalendar, {
   paneWidth: 250,
   locale: 'pt-BR',
   datePickerTintColor: '#469536',
-  popoverKeepVisibleOnInput: true
+  popoverKeepVisibleOnInput: true,
 })
 
 // LightBootstrap plugin
@@ -40,12 +40,12 @@ new Vue({
   router,
   axios,
   data: {
-    coordenadores: [],
-    pessoa: {},
-    minhasConsultas: {},
-    consultaId: 0,
-    consulta: '',
-    minhasReceitas: {},
+    coordenadores:[],
+    pessoa:{},
+    minhasConsultas:{},
+    consultaId:0,
+    consulta:'',
+    minhasReceitas:{},
     usuario: [
       {
         nome: 'Carlos Henrique de Azevedo',

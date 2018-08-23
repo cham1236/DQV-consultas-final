@@ -19,8 +19,6 @@ import ConfirmarHorario from 'src/components/Dashboard/Views/ConfirmarHorario.vu
 import CadastrarEspecialista from 'src/components/Dashboard/Views/CadastrarEspecialista.vue'
 import Consulta from 'src/components/Dashboard/Views/Consulta.vue'
 import ValidarDiarias from 'src/components/Dashboard/Views/ValidarDiarias.vue'
-import RealizarConsulta from 'src/components/Dashboard/Views/RealizarConsulta.vue'
-
 const routes = [
   {
     path: '/',
@@ -60,13 +58,13 @@ const routes = [
       {
         path: 'minhasConsultas',
         name: 'MinhasConsultas',
-        component: MinhasConsultas
+        component: MinhasConsultas,
       },
       {
         path: 'minhasConsultas/:id',
         name: 'Consulta',
         component: Consulta,
-        props: true
+        props: true    
       },
       {
         path: 'marcarConsulta',
@@ -117,11 +115,6 @@ const routes = [
         path: 'confirmarHorario',
         name: 'ConfirmarHorario',
         component: ConfirmarHorario
-      },
-      {
-        path: 'realizarConsulta',
-        name: 'RealizarConsulta',
-        component: RealizarConsulta
       }
     ]
   },

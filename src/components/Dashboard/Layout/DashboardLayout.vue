@@ -30,14 +30,7 @@
         <p>Minhas consultas</p>
       </sidebar-link>
 
-      <br><center><strong> Atendente </strong></center><br>
- 
-      <sidebar-link to="/admin/marcarConsulta">
-        <i class="nc-icon nc-notes"></i>
-        <p>Marcar consulta</p>
-      </sidebar-link>
-
-      <!--LINKS DO SERVIDOR -->      
+     <!--LINKS DO SERVIDOR -->      
 
       <div v-if="this.$root.$data.pessoa.situacao==='ATIVO'">
 
@@ -133,7 +126,6 @@
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
   import MobileMenu from './MobileMenu.vue'
-  
   export default {
     components: {
       TopNavbar,
