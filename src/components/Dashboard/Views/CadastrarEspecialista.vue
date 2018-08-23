@@ -327,7 +327,7 @@ const axios=require('axios')
         this.endereco.cidade = this.cidade;
         this.endereco.uf = this.uf;
 
-        axios.get('http://localhost:9000/coordenador/' + 1).then(response => {
+        axios.get('http://localhost:9000/coordenador/' + this.coordenador).then(response => {
           this.user.coordenador = false;
           this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
             // Success
@@ -365,7 +365,6 @@ const axios=require('axios')
         this.userMed.especialidade = this.especialidade;
         this.userMed.dataAdmissao = this.dataAdmissao;
         this.userMed.tipoMedico = this.medico;
-        this.userMed.crm =  this.crm;
         
         this.endereco.cep = this.cep;
         this.endereco.logradouro = this.logradouro;
@@ -373,11 +372,11 @@ const axios=require('axios')
         this.endereco.cidade = this.cidade;
         this.endereco.uf = this.uf;
 
-        axios.get('http://localhost:9000/coordenador/' + 1).then(response => {
-          this.user.coordenador = false;
+        axios.get('http://localhost:9000/coordenador/' + this.coordenador).then(response => {
+          this.userMed.coordenador = false;
           this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
             // Success
-            this.user.endereco = response.data;
+            this.userMed.endereco = response.data;
             this.$http.post('http://localhost:9000/medico/' + this.coordenador, this.userMed).then(function (response) {
               alert("Cadastro Efetuado com sucesso");
               window.open('#/admin/noticias', "_self");
