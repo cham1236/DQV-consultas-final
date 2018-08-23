@@ -130,7 +130,7 @@
 
       <h3>Pertinente ao Especialista</h3>   
       <b-row>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="#especialidade">Especialidade</label>
             <b-select id="especialidade" v-model="especialidade" :options="especialidades"></b-select>
           </div>
@@ -145,7 +145,7 @@
             <label for="#coordenador">Coordenador</label>
             <b-select id="coordenador" v-model="coordenador" :options="this.listaCoordenadores"></b-select>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <label>Data de Adimissão</label>
             <v-date-picker mode='single'
                           v-model='dataAdmissao'>
@@ -154,9 +154,17 @@
                   
       </b-row> 
 
-        <b-row>
-          <b-col md="12">
-            <b-btn variant="primary" block=true v-on:click="cadastrarPessoa">Finalizar Cadastro</b-btn>
+        <b-row v-if="medico == null">
+          <b-col md="12"  >
+            <br>
+            <b-btn variant="primary" block=true v-on:click="cadastrarEspecialista">Finalizar Cadastro</b-btn>
+          </b-col> 
+        </b-row>
+
+        <b-row v-if="medico != null">
+          <b-col md="12"  >
+            <br>
+            <b-btn variant="primary" block=true v-on:click="cadastrarMedico">Finalizar Cadastro Médico</b-btn>
           </b-col> 
         </b-row>
 
@@ -197,6 +205,8 @@ const axios=require('axios')
     },
    data () {
       return{
+        medico: null,
+        crm: null,
 
         email: '' ,
         pass: '',
@@ -243,6 +253,25 @@ const axios=require('axios')
           dataAdmissao: null,
           especialidade: null            
         },
+        userMed: {
+          email: null,
+          pass: null,
+          nome: null,
+          rg: null,
+          cpf: null,
+          telefone: null,
+          sexo: null,
+          estadoCivil: null,
+          dataNascimento: null,
+          dataInicio: null,
+          dataFim: null,
+          coordenador: false,
+          endereco: {},
+          dataAdmissao: null,
+          especialidade: null,
+          crm: null,
+          tipoMedico: null            
+        },
 
         sexo: null,
         enumSexo: [
@@ -278,25 +307,7 @@ const axios=require('axios')
    },
 
    methods: {
-
-      addEndereco: function (){
-        this.endereco.cep = this.cep;
-        this.endereco.logradouro = this.logradouro;
-        this.endereco.numero = this.numero;
-        this.endereco.cidade = this.cidade;
-        this.endereco.uf = this.uf;
-
-        this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
-          // Success
-          this.user.endereco = response.data;
-          console.log(response.data);
-        },function (response) {
-          // Error
-          console.log(response.data)
-        });
-        
-      },
-     cadastrarPessoa: function (){
+     cadastrarEspecialista: function (){
        
         this.user.email = this.email;
         this.user.pass = this.pass;
@@ -339,6 +350,54 @@ const axios=require('axios')
             console.log(error);
         });
      },
+
+      cadastrarMedico: function (){
+       
+        this.userMed.email = this.email;
+        this.userMed.pass = this.pass;
+        this.userMed.nome = this.nome;
+        this.userMed.rg = this.rg;
+        this.userMed.cpf = this.cpf;
+        this.userMed.sexo = this.sexo;
+        this.userMed.telefone = this.telefone;
+        this.userMed.dataNascimento = this.dataNascimento;
+        this.userMed.estadoCivil = this.estadoCivil;
+        this.userMed.especialidade = this.especialidade;
+        this.userMed.dataAdmissao = this.dataAdmissao;
+        this.userMed.tipoMedico = this.medico;
+        this.userMed.crm =  this.crm;
+        
+        this.endereco.cep = this.cep;
+        this.endereco.logradouro = this.logradouro;
+        this.endereco.numero = this.numero;
+        this.endereco.cidade = this.cidade;
+        this.endereco.uf = this.uf;
+
+        axios.get('http://localhost:9000/coordenador/' + 1).then(response => {
+          this.user.coordenador = false;
+          this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
+            // Success
+            this.user.endereco = response.data;
+            this.$http.post('http://localhost:9000/medico/' + this.coordenador, this.userMed).then(function (response) {
+              alert("Cadastro Efetuado com sucesso");
+              window.open('#/admin/noticias', "_self");
+              console.log(response.data);
+            },function (error) {
+              // Error
+              console.log(response.error)
+            });
+          },function (error) {
+            // Error
+            console.log(response.error)
+          });
+            
+            
+
+        }, error => {
+            console.log(error);
+        });
+     }
+
 
    }
    
