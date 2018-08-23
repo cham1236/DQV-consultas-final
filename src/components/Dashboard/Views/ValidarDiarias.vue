@@ -1,9 +1,11 @@
 <template>
 <card>
   <b-row class="justify-content-md-center">
-    <b-col md="12">
+  
       <h2><strong>Validar Diárias</strong></h2>
-    </b-col>
+
+  </b-row>  
+  <b-row class="justify-content-md-center">
     <b-col md="4">
       <b-form-select v-model="selected" :options="especialidades" ></b-form-select>
     </b-col>
