@@ -130,11 +130,18 @@
 
       <h3>Pertinente ao Especialista</h3>   
       <b-row>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label for="#especialidade">Especialidade</label>
-            <b-select id="especialidade" v-model="especialidade" :options="enumEspecialidade"></b-select>
+            <b-select id="especialidade" v-model="especialidade" :options="especialidades"></b-select>
           </div>
-          <div class="col-md-4">
+
+         <div class="col-md-3" v-if="especialidade == 'MEDICO'"> 
+            <!--Seleção de Tipo de Medico-->
+          <label >Selecione Tipo de Médico</label>
+          <b-form-select v-if="especialidade == 'MEDICO'" v-model="medico" :options="tiposMedico"></b-form-select>
+         </div>
+
+          <div class="col-md-3">
             <label for="#coordenador">Coordenador</label>
             <b-select id="coordenador" v-model="coordenador" :options="this.listaCoordenadores"></b-select>
           </div>
@@ -249,12 +256,19 @@ const axios=require('axios')
           {text: 'Divorciado', value:'DIVORCIADO'},
           {text: 'Viúvo', value:'VIUVO'}
         ],
-        enumEspecialidade: [
+        especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
+          { value: 'MEDICO', text: 'Médico' },
           { value: 'ASSISTENTE_SOCIAL', text: 'Assistente Social' },
           { value: 'PSICOLOGO', text: 'Psicólogo' },
           { value: 'NUTRICIONISTA', text: 'Nutricionista' },
           { value: 'ORTODONTISTA', text: 'Ortodontista' }
+        ],
+        tiposMedico:[
+          { value: null, text: 'Escolha uma Especialidade' },
+          { value: 'CARDIOLOGISTA', text: 'Cardiologista' },
+          { value: 'GINECOLOGISTA', text: 'Ginecologista' },
+          { value: 'MEDICO_DO_TRABALHO', text: 'Médico do trabalho' },
         ],
         listaCoordenadores: [],
         coordenador: {},
