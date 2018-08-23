@@ -30,18 +30,7 @@
         <p>Minhas consultas</p>
       </sidebar-link>
 
-<<<<<<< HEAD
-      <br><center><strong> Atendente </strong></center><br>
- 
-      <sidebar-link to="/admin/marcarConsulta">
-=======
-      <sidebar-link to="/admin/marcarConsultaPaciente">
->>>>>>> f2fa0178a0b3f102825d9f31f356ed1c62f37974
-        <i class="nc-icon nc-notes"></i>
-        <p>Marcar consulta</p>
-      </sidebar-link>
-
-      <!--LINKS DO SERVIDOR -->      
+     <!--LINKS DO SERVIDOR -->      
 
       <div v-if="this.$root.$data.pessoa.situacao==='ATIVO'">
 
@@ -149,21 +138,7 @@
         if (this.$sidebar.showSidebar) {
           this.$sidebar.displaySidebar(false)
         }
-<<<<<<< HEAD
       }
-=======
-      },
-      getConsultas: function (){
-        
-        
-        this.$http.get('http://localhost:9000/agendamento/pessoa/').then(response => {
-        this.$root.$data.minhasConsultas = response.body;
-        console.log(response.body);
-        }, response => {
-            console.log(response.mensage);
-        })
-    }
->>>>>>> f2fa0178a0b3f102825d9f31f356ed1c62f37974
     }
   }
 
