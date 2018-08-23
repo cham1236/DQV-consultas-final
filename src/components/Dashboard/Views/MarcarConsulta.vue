@@ -7,32 +7,44 @@
             <template slot="header">
               <h4 class="card-title">Marcar consulta</h4>
             </template>
-
-              CPF do paciente:
-              <b-form-input v-model="CPFPaciente" placeholder="CPF"></b-form-input>
-              <br>
-
+             
             <b-form-fieldset method="POST"> 
 
-              <b-form-select v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
+              <h5>Selecione a especialidade</h5>
+              <b-form-input v-model="CPFPaciente" class="mb-3"></b-form-input>
+              <b-button v-on:click="getPaciente()" type="submit">Pesquisar</b-button>
 
-              <!--Seleção de médicos-->
-              <b-form-select v-if="selected == 'ginecologista'" v-model="medico" :options="ginecologia"></b-form-select>
-              <b-form-select v-if="selected == 'cardio'" v-model="medico" :options="cardiologista"></b-form-select>
-              <b-form-select v-if="selected == 'dentista'" v-model="medico" :options="dentista"></b-form-select>
-              <b-form-select v-if="selected == 'psicologo'" v-model="medico" :options="psicologia"></b-form-select><br>
+              <!--Seleção do Especialidade-->
+              <h5 v-if="(paciente!=null)">Selecione a especialidade</h5>
+              <b-form-select v-if="(paciente!=null)" v-model="selected" :options="especialidades" class="mb-3"></b-form-select>
 
+              <!--Seleção do Especialista-->
+              <h5 v-if="(tipo==false)&&(selected!=null)">Selecione o especialista</h5>
+              <b-form-select v-if="(tipo==false)&&(selected!=null)" v-model="especialista" :options="especialistasLista"></b-form-select>
 
-              <!--Seleção de Data e Hora Disponível-->
+              <!--Seleção de Tipo de Medico-->
+              <h5 v-if="(selected == 'MEDICO')&&(tipo)">Selecione o tipo de médico</h5>
+              <b-form-select v-if="(selected == 'MEDICO')&&(tipo)" v-model="medico" :options="tiposMedico"></b-form-select>
 
-             <date-picker v-if="medico != null" v-model="value" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
+              <!--Seleção do Medico-->
+              <h5 v-if="(medico != null)&&(tipo)">Selecione o médico</h5>
+              <b-form-select v-if="(medico != null)&&(tipo)" v-model="medicoSelecionado" :options="medicosLista"></b-form-select>
+             
+             <!--Seleção de Data Disponível-->
+             <h5 v-if="(medicoSelecionado != null)||(especialista != null)">Selecione a data</h5>
+             <v-date-picker :mode='single' :availableDates='listaDiarias' v-model="dataConsulta" v-if="(medicoSelecionado != null)||(especialista != null)"></v-date-picker>             
+              
             
+             <!--Seleção de Hora Disponível-->
+             <h5 v-if="(dataConsulta != null)">Selecione a hora</h5>
+             <b-form-select v-if="(dataConsulta != null)" v-model="idHorarioselecionado" :options="horariosLista"></b-form-select>
+
              <!--Confirmar agendamento-->
-            <b-button v-if="value != ''" type="submit">Concluir</b-button>
+            <b-button v-if="idHorarioselecionado != null" v-on:click="marcarConsulta()" type="submit">Concluir</b-button>
             </b-form-fieldset>
                          
           </card>
-
+          
         </div>
       </div>
     </div>
@@ -44,50 +56,60 @@
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   const tableColumns = ['Id', 'Name', 'Salary', 'Country', 'City']
   const tableData = [{}]
+  const axios=require('axios')
   export default {
     components: {
       LTable,
       Card,
       DatePicker
     },
+    
     data () {
       return {
+        consulta: null,
+        tipo: false,
         selected: null,
         medico: null,
+        especialista: null,
+        medicoSelecionado: null,
+        diariaSelecionada: null,
+        idHorarioselecionado: null,
+        especialistas: [],
         CPFPaciente: null,
+        paciente: null,
+        dataConsulta:null,
+        data1: "",
+        diariasEspecialistas: [],
+        horariosEspecialista: [],
+        listaDiarias: [],
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
-          { value: 'cardio', text: 'Cardiologista' },
-          { value: 'dentista', text: 'Dentista' },
-          { value: 'ginecologista', text: 'Ginecologista' },
-          { value: 'psicologo', text: 'Psicólogo' }
+          { value: 'MEDICO', text: 'Médico' },
+          { value: 'ASSISTENTE_SOCIAL', text: 'Assistente Social' },
+          { value: 'PSICOLOGO', text: 'Psicólogo' },
+          { value: 'NUTRICIONISTA', text: 'Nutricionista' },
+          { value: 'ORTODONTISTA', text: 'Ortodontista' }
         ],
-        cardiologista: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Marcela', text: 'Fernanda'},
-          {value: 'Algusta', text: 'Algusta'},
-          {value: 'Ricardo', text: 'Ricardo'},
-          {value: 'Renata', text: 'Renata'}              
+        tiposMedico:[
+          { value: null, text: 'Escolha uma Especialidade' },
+          { value: 'CARDIOLOGISTA', text: 'Cardiologista' },
+          { value: 'GINECOLOGISTA', text: 'Ginecologista' },
+          { value: 'MEDICO_DO_TRABALHO', text: 'Médico do trabalho' },
         ],
-        ginecologia: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Fernanda', text: 'Fernanda'},
-          {value: 'Algusta', text: 'Algusta'},
-          {value: 'Ricardo', text: 'Ricardo'},
-          {value: 'Renata', text: 'Renata'}              
+        
+        especialistasLista: [
+          {value: null, text: 'Escolha um:'}
         ],
-        dentista: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Angela', text: 'Angela'},
-          {value: 'Aline', text: 'Aline'},
-          {value: 'Rodrigo', text: 'Rodrigo'},
-          {value: 'Carlos', text: 'Carlos'}              
+        medicosLista: [
+          {value: null, text: 'Escolha um:'}
         ],
-        psicologia: [
-          {value: null, text: 'Escolha um médico'},
-          {value: 'Maria', text: 'Maria'},
-          {value: 'Alice', text: 'Alice'},            
+        horariosLista: [
+          {value: null, text: 'Escolha um:'}
         ],
+        
+
+
+
         
         value : '',
         shortcuts: [
@@ -105,6 +127,154 @@
         }
       }
       
+      
+    },
+    methods: {
+      marcarConsulta: function (){
+        axios.post('http://localhost:9000/agendamento/' + this.idHorarioselecionado,{"servidor": this.$root.$data.pessoa, "paciente": this.paciente}).then(response => {
+        this.consulta = response.data;
+        console.log(this.consulta);
+        this.$router.push('/admin/MinhasConsultas/' + this.consulta.id)
+        }, error => {
+            console.log(error);
+        });       
+      },
+      getPaciente: function(){
+        this.$http.get('http://localhost:9000/pessoa/cpf/'+this.CPFPaciente).then(function (response) {
+          // Success
+          this.paciente=response.data;
+          console.log(response.data);
+        },function (response) {
+          // Error
+          console.log(response.data)
+        });
+      }
+      
+    },
+    watch: {
+      selected: function (val){
+          if(this.selected==="MEDICO"){
+            this.tipo=true;
+            this.dataConsulta = null;
+          }else{
+            this.tipo=false;
+            this.dataConsulta = null;
+            axios.post('http://localhost:9000/especialista/especialidade',{especialidade: this.selected}).then(response => {
+            this.especialistas = response.data;
+            this.especialistasLista = [{value: null, text: 'Escolha um:'}];
+            this.especialistas.map(especialista => {
+              this.especialistasLista.push({value: especialista.id, text: especialista.nome});
+              
+            })
+            
+            // this.$root.$data.coordenadores;
+            // console.log(this.coordenadores);
+            
+            }, error => {
+                console.log(error);
+            });              
+          }
+           
+      },
+
+      medico: function (val){
+          console.log(this.medico);
+          if(this.tipo){
+            this.dataConsulta = null;
+            axios.post('http://localhost:9000/medico/especialidade',{tipo: this.medico}).then(response => {
+            this.especialistas = response.data;
+            this.medicosLista = [{value: null, text: 'Escolha um:'}];
+            this.especialistas.map(especialista => {
+              this.medicosLista.push({value: especialista.id, text: especialista.nome});
+              
+            })
+            
+            console.log(this.medicos);
+            // this.$root.$data.coordenadores;
+            // console.log(this.coordenadores);
+            
+            }, error => {
+                console.log(error);
+            });   
+          }
+           
+      },
+
+      medicoSelecionado: function (val){
+          if(this.tipo){
+            axios.get('http://localhost:9000/diaria/especialista/' + this.medicoSelecionado).then(response => {
+            this.diariasEspecialistas = response.data;
+            this.listaDiarias = [];
+            this.dataConsulta = null;
+            this.diariasEspecialistas.map(diaria => {
+              this.listaDiarias.push(new Date(diaria.diaria));
+              
+            })
+            
+            // this.medicosLista = [{value: null, text: 'Escolha um:'}];
+            // this.especialistas.map(especialista => {
+            //   this.medicosLista.push({value: especialista.id, text: especialista.nome});
+              
+            // })
+            
+            // console.log(this.medicos);
+            // this.$root.$data.coordenadores;
+            // console.log(this.coordenadores);
+            
+            }, error => {
+                console.log(error);
+            });   
+          }
+           
+      },
+
+      especialista:function (val){
+          if(!this.tipo){
+            axios.get('http://localhost:9000/diaria/especialista/' + this.especialista).then(response => {
+            this.diariasEspecialistas = response.data;
+            this.dataConsulta = null;
+            this.listaDiarias = [];
+            this.listaDiarias.push(new Date(1975,8,10));
+            this.diariasEspecialistas.map(diaria => {
+              this.listaDiarias.push(new Date(diaria.diaria));
+              
+            })
+            
+            
+            }, error => {
+                console.log(error);
+            });   
+          }
+           
+      },
+
+      dataConsulta: function (val){
+        
+        this.diariasEspecialistas.map(diaria => {
+              this.data1=new Date(diaria.diaria);
+              if(this.data1.getDate()==this.dataConsulta.getDate()){
+                this.diariaSelecionada=diaria;
+              }
+            })
+      },
+
+      diariaSelecionada: function (val){
+        axios.get('http://localhost:9000/horario/diariaespecialista/' + this.diariaSelecionada.id).then(response => {
+            this.horariosEspecialista = [];
+            this.horariosEspecialista = response.data;
+            this.horariosLista = [{value: null, text: 'Escolha um:'}];
+            this.horariosEspecialista.map(horario => {
+              this.horariosLista.push({value: horario.id, text: horario.horaInico});
+              
+            })
+            
+            
+            }, error => {
+                console.log(error);
+            });
+        
+      }
+
     }
   }
 </script>
