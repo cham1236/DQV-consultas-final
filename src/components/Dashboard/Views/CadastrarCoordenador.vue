@@ -31,8 +31,8 @@
           </div>
           <div class="col-md-4">
             <fg-input type="text"
-                      label="Pais"
-                      placeholder="Pais"
+                      label="UF"
+                      placeholder="UF"
                       v-model="uf">
             </fg-input>
           </div>
@@ -45,11 +45,11 @@
           </div>
         </div>
 
-        <b-row>
+        <!-- <b-row>
           <b-col md="12">
             <b-btn  block=true v-on:click="addEndereco">Cadastrar Endereco</b-btn>
           </b-col>  
-        </b-row>
+        </b-row> -->
         
         <h3>Dados Pessoais</h3>
         <b-row>        
@@ -122,25 +122,28 @@
 
           <div class="col-md-3">
             <label>Data de Nascimento</label>
-            <v-date-picker mode='single'
+            <v-date-picker :mode='single'
                           v-model='dataNascimento'>
             </v-date-picker> 
           </div>
         </b-row>
-      <h3>Pertinente ao Cordenador</h3>
 
-      <h3>Pertinente ao Especialista</h3>   
+      <h3>Pertinente ao Coordenador</h3>   
       <b-row>
           <div class="col-md-4">
-            <label for="#especialidade">Especialidade</label>
-            <b-select id="especialidade" v-model="especialidade" :options="enumEspecialidade"></b-select>
+            <label>Data de Inicio</label>
+            <v-date-picker :mode='single'
+                          v-model='dataInicio'>
+            </v-date-picker> 
           </div>
           <div class="col-md-4">
-            <label for="#coordenador"></label>
-            <b-select id="coordenador" v-model="coordenador" :options="coordenadores"></b-select>
-          </div>  
+            <label>Data Final</label>
+            <v-date-picker :mode='single'
+                          v-model='dataFim'>
+            </v-date-picker>                     
+          </div>
+                
       </b-row> 
-      
 
         <b-row>
           <b-col md="12">
@@ -154,19 +157,11 @@
 </template>
 <script>
 import Card from 'src/components/UIComponents/Cards/Card.vue'
+const axios=require('axios') 
 
   export default {
     components: {
       Card
-    },
-    created () {
-      this.$http.get('http://localhost:9000/coordenador/ativos').then(response => {
-        this.coordenador = response.data;
-        console.log();
-
-        }, response => {
-            console.log(response);
-        })
     },
    data () {
       return{
@@ -181,6 +176,8 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
         sexo: '',
         estadoCivil: '',
         dataNascimento: null,
+        dataInicio: null,
+        dataFim: null,
 
 
         cep: null,
@@ -209,9 +206,8 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
           dataNascimento: null,
           dataInicio: null,
           dataFim: null,
-          coordenador: null,
-          agendamentoConsultaPaciente: [],
-          endereco: {}            
+          coordenador: false,
+          endereco: {},          
         },
 
         sexo: null,
@@ -231,11 +227,12 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
           { value: 'ASSISTENTE_SOCIAL', text: 'Assistente Social' },
           { value: 'PSICOLOGO', text: 'Psicólogo' },
           { value: 'NUTRICIONISTA', text: 'Nutricionista' },
-          { value: 'ORTODONTISTA', text: 'Ortodontista' },
-          { value: 'MEDICO', text: 'Médico' }
+          { value: 'ORTODONTISTA', text: 'Ortodontista' }
         ],
+        listaCoordenadores: [],
         coordenador: {},
-        coordenadores: [{}]
+        coord:'',
+        coordenadores: [],
       }
    },
 
@@ -260,7 +257,7 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
       },
      cadastrarPessoa: function (){
        
-       this.user.email = this.email;
+        this.user.email = this.email;
         this.user.pass = this.pass;
         this.user.nome = this.nome;
         this.user.rg = this.rg;
@@ -269,15 +266,34 @@ import Card from 'src/components/UIComponents/Cards/Card.vue'
         this.user.telefone = this.telefone;
         this.user.dataNascimento = this.dataNascimento;
         this.user.estadoCivil = this.estadoCivil;
-       
-        this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
+        this.user.especialidade = this.especialidade;
+        this.user.dataInicio = this.dataInicio;
+        this.user.dataFim = this.dataFim;
+        this.user.coordenador = true;
+        
+        this.endereco.cep = this.cep;
+        this.endereco.logradouro = this.logradouro;
+        this.endereco.numero = this.numero;
+        this.endereco.cidade = this.cidade;
+        this.endereco.uf = this.uf;
+
+        this.$http.post('http://localhost:9000/endereco', this.endereco).then(function (response) {
           // Success
-          console.log(response.data);
+          this.user.endereco = response.data;
+          this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
+            // Success
+            console.log(response.data);
+          },function (response) {
+            // Error
+            console.log(response.data)
+          });
+
         },function (response) {
           // Error
           console.log(response.data)
         });
-     }
+        
+     },
 
    }
    
