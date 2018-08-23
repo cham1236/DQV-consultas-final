@@ -135,7 +135,7 @@
             <b-select id="especialidade" v-model="especialidade" :options="enumEspecialidade"></b-select>
           </div>
           <div class="col-md-4">
-            <label for="#coordenador"></label>
+            <label for="#coordenador">Coordenador</label>
             <b-select id="coordenador" v-model="coordenador" :options="this.listaCoordenadores"></b-select>
           </div>
           <div class="col-md-3">

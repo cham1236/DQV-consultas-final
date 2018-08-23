@@ -21,10 +21,9 @@
 
               <!--Seleção de Data e Hora Disponível-->
 
-             <date-picker v-if="medico != null" v-model="value" lang="pt-br" type="datetime" format="DD-MM-YYYY hh:mm:ss a" :minute-step="10" :not-before="new Date()" ></date-picker>             
-            
+             <v-date-picker :mode='single' :availableDates='[new Date(),new Date(2018,7,25)]' v-model="dataConsulta"></v-date-picker>             
              <!--Confirmar agendamento-->
-            <b-button v-if="value != ''" type="submit">Concluir</b-button>
+            <b-button v-on:click="addConsulta" v-if="dataConsulta != null" type="submit">Agendar</b-button>
             </b-form-fieldset>
                          
           </card>
@@ -35,7 +34,7 @@
   </div>
 </template>
 <script>
-  import DatePicker from 'vue2-datepicker'
+
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   const tableColumns = ['Id', 'Name', 'Salary', 'Country', 'City']
@@ -44,13 +43,12 @@
     components: {
       LTable,
       Card,
-      DatePicker
     },
     data () {
       return {
         especialidade: null,
         medico: null,
-        dataCons: null,
+        dataConsulta: null,
         selected: null,
         especialidades: [
           { value: null, text: 'Escolha uma Especialidade' },
@@ -104,7 +102,7 @@
     },
     methods:{
       addConsulta: function() {
-      this.$root.$data.consultas.push({especialidade: this.especialidade, medico: this.medico, dataCons: this.dataCons, status: 'Pendente', cpfPaciente: this.$root.$data.CPF});
+      this.$root.$data.consultas.push({especialidade: this.especialidade, medico: this.medico, dataConsulta: this.dataConsulta, status: 'Pendente', cpfPaciente: this.$root.$data.CPF});
     }
   }
 }
