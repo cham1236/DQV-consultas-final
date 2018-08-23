@@ -18,6 +18,7 @@ import CadastrarUsuario from 'src/components/Dashboard/Views/CadastrarUsuario.vu
 import ConfirmarHorario from 'src/components/Dashboard/Views/ConfirmarHorario.vue'
 import CadastrarEspecialista from 'src/components/Dashboard/Views/CadastrarEspecialista.vue'
 import Consulta from 'src/components/Dashboard/Views/Consulta.vue'
+import ValidarDiarias from 'src/components/Dashboard/Views/ValidarDiarias.vue'
 const routes = [
   {
     path: '/',
@@ -94,6 +95,11 @@ const routes = [
         path: 'definirHorario',
         name: 'DefinirHorario',
         component: DefinirHorario
+      },
+      {
+        path: 'validarDiarias',
+        name: 'ValidarDiarias',
+        component: ValidarDiarias
       },
       {
         path: 'cadastrarUsuario',

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">DQV</a>
+      <a class="navbar-brand" href="#/admin/noticias">DQV</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"

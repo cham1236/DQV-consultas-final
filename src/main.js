@@ -15,7 +15,7 @@ Vue.use(VCalendar, {
   paneWidth: 250,
   locale: 'pt-BR',
   datePickerTintColor: '#469536',
-  popoverKeepVisibleOnInput: true
+  popoverKeepVisibleOnInput: true,
 })
 
 // LightBootstrap plugin
