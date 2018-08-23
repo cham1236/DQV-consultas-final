@@ -121,7 +121,8 @@
         <div class="col-md-4">
           <label>Data de Nascimento</label>
           <v-date-picker mode='single'
-                         v-model='dataNascimento'>
+                         v-model='dataNascimento'
+                         :input-props='{ class: "input", placeholder: "Data de Nascimento", readonly: false }'>>
           </v-date-picker> 
         </div>
       </div>

@@ -61,7 +61,7 @@ export default {
   methods:{
       addHorarios: function() {
       this.arrayHorarios.push({
-          dataConsulta: this.dataConsulta.toDateString, 
+          dataConsulta: this.dataConsulta, 
           horaInicio: this.horaInicio, 
           horaFim: this.horaFim, 
           status: 'Pendente'

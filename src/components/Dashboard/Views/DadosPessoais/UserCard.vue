@@ -5,8 +5,8 @@
       <a href="#">
         <img class="avatar border-gray" src="static/img/faces/face-5.jpg" alt="..."/>
 
-        <h4 class="title">Mike Andrew<br />
-          <small>michael24</small>
+        <h4 class="title">{{this.$root.$data.pessoa.nome}}<br />
+          <small>{{this.$root.$data.pessoa.email}}</small>
         </h4>
       </a>
     </div>
