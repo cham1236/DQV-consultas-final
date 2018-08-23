@@ -129,7 +129,7 @@
         axios.post('http://localhost:9000/agendamento/' + this.idHorarioselecionado,{"paciente": this.$root.$data.pessoa}).then(response => {
         this.consulta = response.data;
         console.log(this.consulta);
-        
+        this.$router.push('/admin/MinhasConsultas/' + this.consulta.id)
         }, error => {
             console.log(error);
         });       
@@ -219,6 +219,7 @@
             this.diariasEspecialistas = response.data;
             this.dataConsulta = null;
             this.listaDiarias = [];
+            this.listaDiarias.push(new Date(1975,8,10));
             this.diariasEspecialistas.map(diaria => {
               this.listaDiarias.push(new Date(diaria.diaria));
               

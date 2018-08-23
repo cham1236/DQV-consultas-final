@@ -15,7 +15,7 @@
         <p>Dados Pessoais</p>
       </sidebar-link>
 
-      <sidebar-link to="/admin/agendarAtendimento">
+      <sidebar-link to="/admin/marcarConsultaPaciente">
         <i class="nc-icon nc-notes"></i>
         <p>Agendar Atendimento</p>
       </sidebar-link>
