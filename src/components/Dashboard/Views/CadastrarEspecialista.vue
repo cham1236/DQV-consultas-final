@@ -135,12 +135,6 @@
             <b-select id="especialidade" v-model="especialidade" :options="especialidades"></b-select>
           </div>
 
-         <div class="col-md-3" v-if="especialidade == 'MEDICO'"> 
-            <!--Seleção de Tipo de Medico-->
-          <label >Selecione Tipo de Médico</label>
-          <b-form-select v-if="especialidade == 'MEDICO'" v-model="medico" :options="tiposMedico"></b-form-select>
-         </div>
-
           <div class="col-md-3">
             <label for="#coordenador">Coordenador</label>
             <b-select id="coordenador" v-model="coordenador" :options="this.listaCoordenadores"></b-select>
@@ -153,6 +147,21 @@
           </div>  
                   
       </b-row> 
+
+      <b-row>
+          <div class="col-md-3" v-if="especialidade == 'MEDICO'"> 
+            <!--Seleção de Tipo de Medico-->
+          <label >Selecione Tipo de Médico</label>
+          <b-form-select v-if="especialidade == 'MEDICO'" v-model="medico" :options="tiposMedico"></b-form-select>
+         </div>
+         <div class="col-md-4" v-if="especialidade == 'MEDICO'">
+            <fg-input type="text"
+                      label="CRM"
+                      placeholder="CRM"
+                      v-model="crm">
+            </fg-input>
+          </div>
+      </b-row>
 
         <b-row v-if="medico == null">
           <b-col md="12"  >
@@ -365,6 +374,7 @@ const axios=require('axios')
         this.userMed.especialidade = this.especialidade;
         this.userMed.dataAdmissao = this.dataAdmissao;
         this.userMed.tipoMedico = this.medico;
+        this.userMed.crm = this.crm;
         
         this.endereco.cep = this.cep;
         this.endereco.logradouro = this.logradouro;

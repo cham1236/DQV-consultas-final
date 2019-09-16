@@ -1,6 +1,6 @@
 <template>
     <card>
-      <h2  slot="header" class="b-container-title">Cadastrar Especialista</h2>
+      <h2  slot="header" class="b-container-title">Cadastrar Coordenador</h2>
       <b-form>
 
         <h3>Endereço</h3>
@@ -267,7 +267,7 @@ const axios=require('axios')
         this.user.dataNascimento = this.dataNascimento;
         this.user.estadoCivil = this.estadoCivil;
         this.user.especialidade = this.especialidade;
-        this.user.dataInicio = this.dataInicio;
+        this.user.dataIncio = this.dataInicio;
         this.user.dataFim = this.dataFim;
         this.user.coordenador = true;
         
@@ -282,6 +282,8 @@ const axios=require('axios')
           this.user.endereco = response.data;
           this.$http.post('http://localhost:9000/pessoa', this.user).then(function (response) {
             // Success
+            alert("Cadastro Efetuado com sucesso");
+            window.open('#/admin/noticias', "_self");
             console.log(response.data);
           },function (response) {
             // Error
