@@ -32,7 +32,12 @@
              
              <!--Seleção de Data Disponível-->
              <h5 v-if="(medicoSelecionado != null)||(especialista != null)">Selecione a data</h5>
-             <v-date-picker :mode='single' :availableDates='listaDiarias' v-model="dataConsulta" v-if="(medicoSelecionado != null)||(especialista != null)"></v-date-picker>             
+             <v-date-picker 
+              :mode='single' 
+              :availableDates='listaDiarias' 
+              v-model="dataConsulta" 
+              v-if="(medicoSelecionado != null)||(especialista != null)">
+             </v-date-picker>             
               
             
              <!--Seleção de Hora Disponível-->

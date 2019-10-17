@@ -46,13 +46,6 @@ new Vue({
     consultaId:0,
     consulta:'',
     minhasReceitas:{},
-    usuario: [
-      {
-        nome: 'Carlos Henrique de Azevedo',
-        email: 'azevedo1236@gmail.com',
-        cpf: '87262789222'
-      }
-    ],
     email: 'exemplo@ufrpe.br',
     senha: '123',
     medico: 'Fernanda',

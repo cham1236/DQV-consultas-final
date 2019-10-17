@@ -152,7 +152,7 @@
           <div class="col-md-3" v-if="especialidade == 'MEDICO'"> 
             <!--Seleção de Tipo de Medico-->
           <label >Selecione Tipo de Médico</label>
-          <b-form-select v-if="especialidade == 'MEDICO'" v-model="medico" :options="tiposMedico"></b-form-select>
+          <b-form-select v-if="especialidade == 'MEDICO'" v-model="tipoMedico" :options="tiposMedico"></b-form-select>
          </div>
          <div class="col-md-4" v-if="especialidade == 'MEDICO'">
             <fg-input type="text"
@@ -163,14 +163,14 @@
           </div>
       </b-row>
 
-        <b-row v-if="medico == null">
+        <b-row v-if="especialidade != 'MEDICO'">
           <b-col md="12"  >
             <br>
             <b-btn variant="primary" block=true v-on:click="cadastrarEspecialista">Finalizar Cadastro</b-btn>
           </b-col> 
         </b-row>
 
-        <b-row v-if="medico != null">
+        <b-row v-if="especialidade == 'MEDICO'">
           <b-col md="12"  >
             <br>
             <b-btn variant="primary" block=true v-on:click="cadastrarMedico">Finalizar Cadastro Médico</b-btn>
@@ -229,6 +229,7 @@ const axios=require('axios')
         dataNascimento: null,
         dataAdmissao: null,
         especialidade: null,
+        tipoMedico: null,
 
 
         cep: null,
@@ -279,7 +280,7 @@ const axios=require('axios')
           dataAdmissao: null,
           especialidade: null,
           crm: null,
-          tipoMedico: null            
+          tipo: null            
         },
 
         sexo: null,
@@ -373,7 +374,7 @@ const axios=require('axios')
         this.userMed.estadoCivil = this.estadoCivil;
         this.userMed.especialidade = this.especialidade;
         this.userMed.dataAdmissao = this.dataAdmissao;
-        this.userMed.tipoMedico = this.medico;
+        this.userMed.tipo = this.tipoMedico;
         this.userMed.crm = this.crm;
         
         this.endereco.cep = this.cep;

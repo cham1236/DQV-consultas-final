@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3 slot="header" class="card-title">{{this.consulta.especialista.especialidade}}</h3>
+    <h3 slot="header" class="card-title">Consulta</h3>
     <b-card title="" sub-title="">
           <h5 v-if="this.consulta.especialista.especialidade==='MEDICO'" slot="header" class="card-title">{{this.consulta.especialista.tipo}}</h5>
-          <p>Dr {{this.consulta.especialista.nome}}</p>
+          <p>Paciente {{atendimento.paciente.nome}}</p>
           <p v-if="this.consulta.status? status ='Realizada' : status ='Pendente' " >Status: {{status}}</p>
           <p class="card-text">
               Data: {{this.consulta.horario.diaria.diaria}}
@@ -22,7 +22,7 @@
           <div v-if="this.consulta.status">
             <label>Procedimento Realizado</label>
             <p class="card-text">
-               {{this.consulta.procedimentoRealizado}}
+                {{this.consulta.procedimentoRealizado}}
             </p>
           </div>
 
@@ -35,6 +35,7 @@
       </b-card>
       <div class="row" v-if="this.consulta.status">  
             <div class="col-md-10"><h3 slot="header" class="card-title">Receitas da Consulta</h3></div>
+            <div class="col-md-1"><b-button class="card-link" v-on:click="receitar(consulta.id)" >Receitar</b-button></div>
       </div>
       <b-card>
         <div>
@@ -64,6 +65,7 @@ const axios = require('axios')
       return{
         bool:false,
         consulta: {},
+        atendimento: {},
         receitas: {}
       }
     },
@@ -79,17 +81,23 @@ const axios = require('axios')
         }
         return this.bool
       },
+      getConsulta: function() {
+        axios.get("http://localhost:9000/agendamento/" + this.id).then(res => {
+          this.atendimento = res.data
+          this.consulta = this.atendimento.consulta
+          console.log(this.consulta)
+        })
+      },
       getReceitas: function() {
         axios.get("http://localhost:9000/receita/consulta/" + this.id).then(res => {
           this.receitas = res.data
           console.log(this.receitas)
         })
       },
-      getConsulta: function() {
-        axios.get("http://localhost:9000/consulta/" + this.id).then(res => {
-          this.consulta = res.data
-        })
-      }
+      receitar: function(id) {
+        this.$router.push('/admin/receitar/' + id)
+        console.log(id)
+      },
     },
     mounted() {
       this.getConsulta()

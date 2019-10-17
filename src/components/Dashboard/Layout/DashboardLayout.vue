@@ -84,9 +84,9 @@
 
       </div>
       
-      <!--LINKS DO MÉDICO  -->
-      <div v-if="this.$root.$data.pessoa.especialidade==='MEDICO'">
-        <br><center><strong> Médico </strong></center><br>
+      <!--LINKS DO ESPECIALISTA  -->
+      <div v-if="this.$root.$data.pessoa.especialidade != null">
+        <br><center><strong> Especialista </strong></center><br>
 
         <sidebar-link to="/admin/definirHorario">
           <i class="nc-icon nc-tag-content"></i>

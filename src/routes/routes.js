@@ -19,6 +19,9 @@ import ConfirmarHorario from 'src/components/Dashboard/Views/ConfirmarHorario.vu
 import CadastrarEspecialista from 'src/components/Dashboard/Views/CadastrarEspecialista.vue'
 import cadastrarCoordenador from 'src/components/Dashboard/Views/CadastrarCoordenador.vue'
 import Consulta from 'src/components/Dashboard/Views/Consulta.vue'
+import ConsultaEspecialista from 'src/components/Dashboard/Views/ConsultaEspecialista.vue'
+import RealizarAtendimento from 'src/components/Dashboard/Views/RealizarAtendimento.vue'
+import Receitar from 'src/components/Dashboard/Views/Receitar.vue'
 import ValidarDiarias from 'src/components/Dashboard/Views/ValidarDiarias.vue'
 const routes = [
   {
@@ -86,6 +89,24 @@ const routes = [
         path: 'meusAtendimentos',
         name: 'MeusAtendimentos',
         component: MeusAtendimentos
+      },
+      {
+        path: 'meusAtendimentos/:id',
+        name: 'ConsultaEspecialista',
+        component: ConsultaEspecialista,
+        props: true    
+      },
+      {
+        path: 'realizarAtendimento/:id',
+        name: 'RealizarAtendimento',
+        component: RealizarAtendimento,
+        props: true    
+      },
+      {
+        path: 'receitar/:id',
+        name: 'Receitar',
+        component: Receitar,
+        props: true    
       },
       {
         path: 'receitasprescritas',
